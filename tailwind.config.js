@@ -5,9 +5,11 @@ module.exports = {
     extend: {
       fontFamily: {
         body: ["Roboto", "sans-serif"],
+        title: ["Exo", "sans-serif"],
       },
       colors: {
         primary: "#5567ff",
+        navbar: "#303956",
       },
     },
   },

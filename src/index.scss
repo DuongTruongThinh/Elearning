@@ -5,4 +5,27 @@
   body {
     @apply font-body;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-title;
+  }
+}
+
+@layer components {
+  .page-container {
+    @apply max-w-6xl;
+    @apply mx-auto;
+    @apply px-6;
+  }
+}
+
+@layer utilities {
+  .text-gray-sm {
+    font-size: 13px;
+    @apply text-gray-400;
+  }
 }
