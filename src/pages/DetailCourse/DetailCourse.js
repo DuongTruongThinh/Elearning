@@ -4,6 +4,8 @@ import { courseServ } from "../../services/api";
 import Button from "../../components/Button/Button";
 import { PlayCircleOutlined } from "@ant-design/icons";
 import TeacherInfo from "./TeacherInfo";
+import PageSeparate from "../../components/PageSeparate/PageSeparate";
+import { ConfigProvider, Divider } from "antd";
 
 const DetailCourse = () => {
   const [course, setCourse] = useState({});
@@ -41,6 +43,16 @@ const DetailCourse = () => {
         </div>
 
         <TeacherInfo info={course.nguoiTao} />
+        <section className="page-section">
+          <div className="page-container">
+            <PageSeparate>Mục Lục</PageSeparate>
+
+            <div className="grid grid-cols-12">
+              <div className="col-span-7 bg-red-400">a</div>
+              <div className="col-span-5">b</div>
+            </div>
+          </div>
+        </section>
       </div>
     )
   );

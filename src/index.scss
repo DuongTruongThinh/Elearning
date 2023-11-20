@@ -21,6 +21,21 @@
     @apply mx-auto;
     @apply px-6;
   }
+  .page-section {
+    @apply py-8;
+  }
+  .separate-page {
+    position: relative;
+  }
+  .separate-page::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 1px;
+    @apply bg-gray-300;
+  }
 }
 
 @layer utilities {
