@@ -5,7 +5,9 @@ import Button from "../../components/Button/Button";
 import { PlayCircleOutlined } from "@ant-design/icons";
 import TeacherInfo from "./TeacherInfo";
 import PageSeparate from "../../components/PageSeparate/PageSeparate";
-import { ConfigProvider, Divider } from "antd";
+import { Collapse } from "antd";
+import CollapseCourse from "./CollapseCourse";
+import { detailData } from "../../data/DetailData";
 
 const DetailCourse = () => {
   const [course, setCourse] = useState({});
@@ -48,7 +50,15 @@ const DetailCourse = () => {
             <PageSeparate>Mục Lục</PageSeparate>
 
             <div className="grid grid-cols-12">
-              <div className="col-span-7 bg-red-400">a</div>
+              <div className="col-span-7 ">
+                {detailData.map((data) => (
+                  <CollapseCourse
+                    key={data.key}
+                    label={data.label}
+                    lessions={data.lessionArr}
+                  ></CollapseCourse>
+                ))}
+              </div>
               <div className="col-span-5">b</div>
             </div>
           </div>
