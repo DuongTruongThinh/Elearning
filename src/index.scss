@@ -22,6 +22,7 @@
     @apply px-6;
   }
   .page-section {
+    border-bottom: 2px solid #e9edf2;
     @apply py-8;
   }
   .separate-page {
@@ -41,6 +42,6 @@
 @layer utilities {
   .text-gray-sm {
     font-size: 13px;
-    @apply text-gray-400;
+    color: #272c33b3;
   }
 }

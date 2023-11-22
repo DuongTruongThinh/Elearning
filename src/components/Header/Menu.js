@@ -52,10 +52,8 @@ const items = [
 const NavMenu = () => {
   const [current, setCurrent] = useState("home");
   const onClick = (e) => {
-    console.log("click ", e);
     setCurrent(e.key);
   };
-  console.log(current);
   return (
     <ConfigProvider
       theme={{

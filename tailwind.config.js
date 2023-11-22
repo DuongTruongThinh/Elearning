@@ -10,6 +10,8 @@ module.exports = {
       colors: {
         primary: "#5567ff",
         navbar: "#303956",
+        bgColor: "#f5f7fa",
+        grey: "#868e96",
       },
     },
   },
