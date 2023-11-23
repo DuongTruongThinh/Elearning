@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../components/Header/Header";
+import Header from "../../components/layouts/Header/Header";
 import { courseServ } from "../../services/api";
 import Button from "../../components/Button/Button";
 import { PlayCircleOutlined, CheckOutlined } from "@ant-design/icons";
@@ -10,6 +10,7 @@ import CollapseCourse from "./CollapseCourse";
 import { detailData } from "../../data/DetailData";
 import { Link } from "react-router-dom";
 import Feedback from "../../components/Feedback/Feedback";
+import Footer from "../../components/layouts/Footer/Footer";
 
 const DetailCourse = () => {
   const [course, setCourse] = useState({});
@@ -183,6 +184,8 @@ const DetailCourse = () => {
         </section>
 
         <Feedback></Feedback>
+
+        <Footer />
       </div>
     )
   );

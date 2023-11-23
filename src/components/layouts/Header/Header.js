@@ -2,7 +2,7 @@ import React from "react";
 import { MenuOutlined, KeyOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import NavMenu from "./Menu";
-import Button from "../Button/Button";
+import Button from "../../Button/Button";
 const Header = () => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex items-center h-16 gap-5 px-5 text-white bg-navbar">
