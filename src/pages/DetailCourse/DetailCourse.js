@@ -9,6 +9,7 @@ import { Collapse } from "antd";
 import CollapseCourse from "./CollapseCourse";
 import { detailData } from "../../data/DetailData";
 import { Link } from "react-router-dom";
+import Feedback from "../../components/Feedback/Feedback";
 
 const DetailCourse = () => {
   const [course, setCourse] = useState({});
@@ -144,7 +145,7 @@ const DetailCourse = () => {
 
         {/* ABOUT AUTHOR */}
 
-        <div className="page-section">
+        <section className="page-section">
           <div className="page-container">
             <div className="grid grid-cols-12 gap-6">
               <div className="col-span-7">
@@ -179,7 +180,9 @@ const DetailCourse = () => {
               </div>
             </div>
           </div>
-        </div>
+        </section>
+
+        <Feedback></Feedback>
       </div>
     )
   );

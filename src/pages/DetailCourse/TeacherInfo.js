@@ -5,6 +5,7 @@ import {
   StarFilled,
   StarOutlined,
 } from "@ant-design/icons";
+import { ConfigProvider, Rate } from "antd";
 
 const TeacherInfo = ({ info }) => {
   return (
@@ -39,13 +40,16 @@ const TeacherInfo = ({ info }) => {
             </div>
           </div>
           <div className="text-center">
-            <div className="flex gap-1 text-xl text-yellow-400 ">
-              <StarFilled />
-              <StarFilled />
-              <StarFilled />
-              <StarFilled />
-              <StarOutlined />
-            </div>
+            <ConfigProvider
+              theme={{
+                token: {
+                  marginXS: 4,
+                },
+              }}
+            >
+              <Rate disabled defaultValue={4}></Rate>
+            </ConfigProvider>
+
             <p className="text-gray-sm">232 đánh giá</p>
           </div>
         </div>
