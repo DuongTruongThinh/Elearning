@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { MailOutlined, SettingOutlined } from "@ant-design/icons";
 import { ConfigProvider, Menu } from "antd";
 const items = [
   {
@@ -12,7 +11,6 @@ const items = [
     children: [
       {
         type: "group",
-        label: "Item 1",
         children: [
           {
             label: "Option 1",
@@ -21,20 +19,6 @@ const items = [
           {
             label: "Option 2",
             key: "setting:2",
-          },
-        ],
-      },
-      {
-        type: "group",
-        label: "Item 2",
-        children: [
-          {
-            label: "Option 3",
-            key: "setting:3",
-          },
-          {
-            label: "Option 4",
-            key: "setting:4",
           },
         ],
       },
@@ -63,8 +47,12 @@ const NavMenu = () => {
         },
         components: {
           Menu: {
-            horizontalLineHeight: 2,
             itemHoverColor: "#fff",
+            activeBarHeight: 0,
+            itemSelectedColor: "#fff",
+            itemHoverBg: "#fff",
+            itemMarginInline: 8,
+            itemMarginBlock: 8,
           },
         },
       }}

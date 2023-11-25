@@ -5,11 +5,9 @@ import Button from "../../components/Button/Button";
 import { PlayCircleOutlined, CheckOutlined } from "@ant-design/icons";
 import TeacherInfo from "./TeacherInfo";
 import PageSeparate from "../../components/PageSeparate/PageSeparate";
-import { Collapse } from "antd";
 import CollapseCourse from "./CollapseCourse";
 import { detailData } from "../../data/DetailData";
-import { Link } from "react-router-dom";
-import Feedback from "../../components/Feedback/Feedback";
+import Feedback from "../../components/layouts/Feedback/Feedback";
 import Footer from "../../components/layouts/Footer/Footer";
 
 const DetailCourse = () => {

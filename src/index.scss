@@ -78,3 +78,37 @@
     z-index: 1;
   }
 }
+
+// Hover Text color Submenu Header
+
+:where(.css-dev-only-do-not-override-we1ld).ant-menu-light.ant-menu-horizontal
+  > .ant-menu-submenu-open {
+  color: #fff;
+}
+
+:where(.css-dev-only-do-not-override-we1ld).ant-menu-light
+  > .ant-menu
+  .ant-menu-item:not(.ant-menu-item-selected):not(
+    .ant-menu-submenu-selected
+  ):hover,
+:where(.css-dev-only-do-not-override-we1ld).ant-menu-light
+  .ant-menu-item:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected)
+  > .ant-menu-submenu-title:hover,
+:where(.css-dev-only-do-not-override-we1ld).ant-menu-light
+  > .ant-menu
+  .ant-menu-item:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected)
+  > .ant-menu-submenu-title:hover {
+  color: #000;
+  background-color: #eee;
+}
+
+:where(.css-dev-only-do-not-override-we1ld).ant-menu
+  .ant-menu-item-group
+  .ant-menu-item-group-list
+  .ant-menu-item,
+:where(.css-dev-only-do-not-override-we1ld).ant-menu
+  .ant-menu-item-group
+  .ant-menu-item-group-list
+  .ant-menu-submenu-title {
+  padding: 0 10px;
+}
