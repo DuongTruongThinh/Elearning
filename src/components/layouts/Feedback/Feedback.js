@@ -20,10 +20,13 @@ const Feedback = () => {
 
         <Swiper
           spaceBetween={20}
-          slidesPerView={2}
+          slidesPerView={1}
+          breakpoints={{
+            768: {
+              slidesPerView: 2,
+            },
+          }}
           loop={true}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
         >
           <SwiperSlide>
             <BubbleComment

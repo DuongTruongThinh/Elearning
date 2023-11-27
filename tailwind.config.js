@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         body: ["Roboto", "sans-serif"],
         title: ["Exo", "sans-serif"],
+        logo: ["Sriracha", "cursive"],
       },
       colors: {
         primary: "#5567ff",

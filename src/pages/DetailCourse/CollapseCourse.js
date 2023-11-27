@@ -23,7 +23,10 @@ const CollapseCourse = ({ label, lessions }) => {
             children: (
               <div>
                 {lessions.map((item) => (
-                  <div className="flex justify-between p-3 border-b-2 cursor-pointer last:border-b-0">
+                  <div
+                    key={item.text}
+                    className="flex justify-between p-3 border-b-2 cursor-pointer last:border-b-0"
+                  >
                     <div className="flex items-center gap-3 ">
                       <span className="text-lg">{item.icons}</span>
                       <p>{item.text}</p>

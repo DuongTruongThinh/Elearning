@@ -17,7 +17,7 @@
 
 @layer components {
   .page-container {
-    @apply max-w-6xl;
+    @apply max-w-lg;
     @apply mx-auto;
     @apply px-6;
   }
@@ -76,6 +76,29 @@
     border-color: #dfe2e6 transparent transparent transparent;
     position: absolute;
     z-index: 1;
+  }
+}
+
+// Resposive
+
+@media (min-width: 640px) and (max-width: 767px) {
+  /* Medium screens */
+  .page-container {
+    @apply max-w-lg;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Large screens */
+  .page-container {
+    @apply max-w-3xl;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Extra-large screens */
+  .page-container {
+    @apply max-w-6xl;
   }
 }
 

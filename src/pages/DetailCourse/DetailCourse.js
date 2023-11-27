@@ -22,18 +22,17 @@ const DetailCourse = () => {
         console.log(err);
       });
   }, []);
-  console.log(course);
   return (
     course && (
       <div>
         <Header />
 
         <div className="py-16 mt-16 bg-primary">
-          <div className="page-container">
-            <h2 className="mb-4 text-6xl font-semibold text-white">
+          <div className="page-container ">
+            <h2 className="mb-4 text-5xl lg:text-6xl font-semibold text-white">
               {course.tenKhoaHoc}
             </h2>
-            <p className="max-w-2xl mb-8 text-xl text-white text-opacity-50">
+            <p className="max-w-2xl mb-8 text-md lg:text-xl text-white text-opacity-50">
               {course.moTa}
             </p>
             <div className="flex gap-3">
@@ -51,7 +50,7 @@ const DetailCourse = () => {
             <PageSeparate type="gray">Mục Lục</PageSeparate>
 
             <div className="grid grid-cols-12 gap-6">
-              <div className="col-span-7 ">
+              <div className="col-span-12 lg:col-span-7 ">
                 {detailData.map((data) => (
                   <CollapseCourse
                     key={data.key}
@@ -60,7 +59,7 @@ const DetailCourse = () => {
                   ></CollapseCourse>
                 ))}
               </div>
-              <div className="col-span-5">
+              <div className="col-span-12 lg:col-span-5">
                 <div className="p-4 border border-[#d9d9d9] rounded-lg shadow flex flex-col items-center bg-white">
                   <img
                     src={course.hinhAnh}
@@ -96,7 +95,7 @@ const DetailCourse = () => {
         <section className="page-section">
           <div className="page-container">
             <div className="grid grid-cols-12 gap-6">
-              <div className="col-span-7">
+              <div className="col-span-12 md:col-span-7">
                 <PageSeparate>Về khóa học</PageSeparate>
                 <p className="mb-3 text-sm text-gray-sm">
                   Khóa học React là chương trình dạy thư viện JavaScript React
@@ -113,7 +112,7 @@ const DetailCourse = () => {
                   frontend.
                 </p>
               </div>
-              <div className="col-span-5 text-gray-sm">
+              <div className="col-span-12 md:col-span-5 text-gray-sm">
                 <PageSeparate>Những gì bạn sẽ học</PageSeparate>
                 <div>
                   <div className="flex gap-3 mb-2">
@@ -147,7 +146,7 @@ const DetailCourse = () => {
         <section className="page-section">
           <div className="page-container">
             <div className="grid grid-cols-12 gap-6">
-              <div className="col-span-7">
+              <div className="col-span-12 md:col-span-7">
                 <h3 className="mb-3 text-2xl font-semibold">
                   Thông tin giảng viên
                 </h3>
@@ -162,7 +161,7 @@ const DetailCourse = () => {
                 </p>
                 <PageSeparate>Thông tin thêm</PageSeparate>
               </div>
-              <div className="col-span-5 flex items-center flex-col">
+              <div className="col-span-12 md:col-span-5 flex items-center flex-col">
                 <img
                   src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   alt=""
