@@ -1,5 +1,11 @@
+import DetailCourse from "./pages/DetailCourse/DetailCourse";
+
 function App() {
-  return <div className="App text-primary">App</div>;
+  return (
+    <div>
+      <DetailCourse />
+    </div>
+  );
 }
 
 export default App;
