@@ -1,3 +1,4 @@
+// CSS dùng chung cho dự án
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -22,7 +23,7 @@
     @apply px-6;
   }
   .page-section {
-    border-bottom: 2px solid #e9edf2;
+    border-bottom: 2px solid --page-section;
     @apply py-8;
   }
   .separate-page {
