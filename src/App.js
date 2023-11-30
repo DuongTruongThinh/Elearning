@@ -1,9 +1,10 @@
-import DetailCourse from "./pages/DetailCourse/DetailCourse";
+import ChangePassword from "./pages/AccountManagement/ChangePassword";
+import EditAccount from "./pages/AccountManagement/EditAccount";
 
 function App() {
   return (
     <div>
-      <DetailCourse />
+      <ChangePassword />
     </div>
   );
 }
