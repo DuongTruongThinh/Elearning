@@ -3,7 +3,74 @@ import { MenuOutlined, KeyOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import NavMenu from "./NavMenu";
 import Button from "../../Button/Button";
+import { useSelector } from "react-redux";
+import { userLocalStorage } from "../../../services/localServices";
+import { NavLink, useNavigate } from "react-router-dom";
 const Header = () => {
+  let { info } = useSelector((state) => {
+    return state.userReducer;
+  });
+  let navigate = useNavigate();
+  // logout
+  let handleLogOut = () => {
+    userLocalStorage.remove();
+    window.location.reload();
+  };
+  // login
+  let handleLogIn = () => navigate("/login");
+  // register
+  let handleRegister = () => navigate("/register");
+
+  // Home
+  let hocNgay = () => {
+    navigate("/");
+  };
+  // Render tài khoản đăng nhập
+  let renderUserNav = () => {
+    let classBtn =
+      "bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4  hover:border-transparent rounded";
+    if (info) {
+      return (
+        <>
+          <button className="text-white text-gray-400 duration-300 hover:text-white">
+            <NavLink to={`/account/${info.taiKhoan}`} className={classBtn}>
+              <span className="mr-2">{info.hoTen}</span>
+              <i class="fa-solid fa-user-check"></i>
+            </NavLink>
+          </button>
+
+          <button onClick={handleLogOut} className={classBtn}>
+            <span className="mr-2">Đăng xuất</span>
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </button>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <button onClick={handleLogIn} className={classBtn}>
+            Đăng nhập
+          </button>
+          <button className={classBtn} onClick={handleRegister}>
+            Đăng ký
+          </button>
+          {/* <Tooltip
+            title="Đăng nhập"
+            color="#fff"
+            overlayInnerStyle={{ color: "black", fontWeight: 500 }}
+          >
+            <button
+              onClick={handleLogIn}
+              className="text-gray-400 duration-300 hover:text-white"
+            >
+              <KeyOutlined className="text-xl " />
+            </button>
+          </Tooltip> */}
+        </>
+      );
+    }
+  };
+
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex items-center h-16 gap-5 px-5 text-white bg-navbar">
       {/* Toggle Button */}
@@ -56,17 +123,10 @@ const Header = () => {
       {/* Menu */}
       <NavMenu />
       <div className="flex items-center gap-3 ml-auto">
-        <Tooltip
-          title="Đăng nhập"
-          color="#fff"
-          overlayInnerStyle={{ color: "black", fontWeight: 500 }}
-        >
-          <button className="text-gray-400 duration-300 hover:text-white">
-            <KeyOutlined className="text-xl " />
-          </button>
-        </Tooltip>
-
-        <Button type="outline">Học ngay</Button>
+        <div>{renderUserNav()}</div>
+        <Button type="outline" onClick={hocNgay}>
+          Học ngay
+        </Button>
       </div>
     </div>
   );

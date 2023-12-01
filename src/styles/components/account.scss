@@ -1,0 +1,22 @@
+.ant-tabs-tab-btn{
+    bg-bgColor: blue;
+    font-weight: bold;
+}
+:where(.css-dev-only-do-not-override-1adbn6x).ant-tabs-card >.ant-tabs-nav .ant-tabs-tab-active, :where(.css-dev-only-do-not-override-1adbn6x).ant-tabs-card >div>.ant-tabs-nav .ant-tabs-tab-active {
+    color: white;
+    background: rgb(59, 130, 246);
+   
+}
+:where(.css-dev-only-do-not-override-1adbn6x).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color:white
+    
+}
+:where(.css-dev-only-do-not-override-1adbn6x).ant-tabs{
+    background: white;
+    border-bottom: 1px solid  #e5e7eb;
+    padding-bottom: 2.5rem;
+}
+.ant-tabs-tabpane-active {
+    display: flex;
+    justify-content: space-between;
+}
