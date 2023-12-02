@@ -3,28 +3,28 @@ import { MenuOutlined, KeyOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import NavMenu from "./NavMenu";
 import Button from "../../Button/Button";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { userLocalStorage } from "../../../services/localServices";
 import { NavLink, useNavigate } from "react-router-dom";
 const Header = () => {
-  let { info } = useSelector((state) => {
-    return state.userReducer;
-  });
-  let navigate = useNavigate();
-  // logout
-  let handleLogOut = () => {
-    userLocalStorage.remove();
-    window.location.reload();
-  };
-  // login
-  let handleLogIn = () => navigate("/login");
-  // register
-  let handleRegister = () => navigate("/register");
+  // let { info } = useSelector((state) => {
+  //   return state.userReducer;
+  // });
+  // let navigate = useNavigate();
+  // // logout
+  // let handleLogOut = () => {
+  //   userLocalStorage.remove();
+  //   window.location.reload();
+  // };
+  // // login
+  // let handleLogIn = () => navigate("/login");
+  // // register
+  // let handleRegister = () => navigate("/register");
 
-  // Home
-  let hocNgay = () => {
-    navigate("/");
-  };
+  // // Home
+  // let hocNgay = () => {
+  //   navigate("/");
+  // };
   // Render tài khoản đăng nhập
   let renderUserNav = () => {
     let classBtn =
