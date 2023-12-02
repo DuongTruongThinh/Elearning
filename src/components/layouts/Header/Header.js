@@ -32,7 +32,7 @@ const Header = () => {
     if (info) {
       return (
         <>
-          <button className="text-white text-gray-400 duration-300 hover:text-white">
+          <button className="text-white duration-300 hover:text-white">
             <NavLink to={`/account/${info.taiKhoan}`} className={classBtn}>
               <span className="mr-2">{info.hoTen}</span>
               <i class="fa-solid fa-user-check"></i>
