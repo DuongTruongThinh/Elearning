@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL, TOKEN_CYBER, configHeader, https } from "./config";
+import { AUTHOR, BASE_URL, TOKEN_CYBER, configHeader, https } from "./config";
 
 export const courseServ = {
   // Lấy một khóa học demo cho detail page
@@ -16,7 +16,7 @@ export let registerApi = (data) => {
       taiKhoan: data.taiKhoan,
       matKhau: data.matKhau,
       email: data.email,
-      soDt: data.soDt,
+      soDt: data.prefix + data.soDt,
       maNhom: "GP01",
       maLoaiNguoiDung: "HV",
       hoTen: data.hoTen,
@@ -30,5 +30,13 @@ export let registerApi = (data) => {
 export let loginApi = (values) => {
   axios.post(`${BASE_URL}/QuanLyNguoiDung/DangNhap`, values, {
     headers: configHeader(),
+  });
+};
+export let getAccount = (values) => {
+  return axios.post(`${BASE_URL}/QuanLyNguoiDung/ThongTinTaiKhoan`, values, {
+    headers: {
+      TokenCybersoft: TOKEN_CYBER,
+      // Authorization: AUTHOR,
+    },
   });
 };
