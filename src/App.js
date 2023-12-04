@@ -5,6 +5,8 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Account from "./pages/Account/Account";
 import UpdateAccount from "./pages/UpdateAccount/UpdateAccount";
+import AdminLayout from "./components/layouts/AdminLayout/AdminLayout";
+import CourseManagement from "./pages/CourseManagement/CourseManagement";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +20,12 @@ function App() {
           path="/update-account/:id"
           element={<UpdateAccount></UpdateAccount>}
         ></Route>
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route
+            path=""
+            element={<CourseManagement></CourseManagement>}
+          ></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );
