@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
 import { userLocalStorage } from "./localServices";
 
 export const TOKEN_CYBER =
@@ -26,6 +25,6 @@ export const https = axios.create({
   baseURL: BASE_URL,
   headers: {
     TokenCybersoft: TOKEN_CYBER,
-    // Authorization: AUTHOR,
+    Authorization: "Bearer " + userLocalStorage.get()?.accessToken,
   },
 });

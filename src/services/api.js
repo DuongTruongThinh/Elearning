@@ -6,6 +6,9 @@ export const courseServ = {
   getListCourse: () =>
     https.get("/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=ITEC2107"),
   getCategoryList: () => https.get("/QuanLyKhoaHoc/LayDanhMucKhoaHoc"),
+  getCourses: () => https.get("/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP04"),
+  deleteCourse: (id) =>
+    https.delete(`/QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${id}`),
 };
 export let registerApi = (data) => {
   // Gửi thông tin từ form đăng ký
@@ -23,7 +26,8 @@ export let registerApi = (data) => {
     },
     headers: {
       TokenCybersoft: TOKEN_CYBER,
-      // Authorization ?
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWJjZGUiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJHViIsIm5iZiI6MTcwMTUzODcwNSwiZXhwIjoxNzAxNTQyMzA1fQ.5-cq5jm1JndFoR3uxKuT3t_i2XnQHafbBvEDqJB9Tmc",
     },
   });
 };

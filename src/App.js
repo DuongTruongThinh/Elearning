@@ -5,6 +5,10 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Account from "./pages/Account/Account";
 import UpdateAccount from "./pages/UpdateAccount/UpdateAccount";
+import AdminLayout from "./components/layouts/AdminLayout/AdminLayout";
+import CourseManagement from "./pages/CourseManagement/CourseManagement";
+import AddCourse from "./pages/CourseManagement/AddCourse/AddCourse";
+import EditCourse from "./pages/CourseManagement/EditCourse";
 import UserManagement from "./pages/UserManagement/UserManagement";
 import UserMnEditUser from "./pages/UserMnEditUser/UserMnEditUser";
 import UserMnAddUser from "./pages/UserMnAddUser/UserMnAddUser";
@@ -22,6 +26,25 @@ function App() {
           path="/update-account/:id"
           element={<UpdateAccount></UpdateAccount>}
         ></Route>
+        <Route path="/admin" element={<AdminLayout />}>
+          {/* USER MANAGEMENT */}
+          {/* <Route
+            path=""
+            element={}
+          ></Route> */}
+          <Route
+            path="/admin/courses"
+            element={<CourseManagement></CourseManagement>}
+          ></Route>
+          <Route
+            path="/admin/add-course"
+            element={<AddCourse></AddCourse>}
+          ></Route>
+          <Route
+            path="/admin/edit-course"
+            element={<EditCourse></EditCourse>}
+          ></Route>
+        </Route>
         <Route
           path="/user-management/:id"
           element={<UserManagement></UserManagement>}

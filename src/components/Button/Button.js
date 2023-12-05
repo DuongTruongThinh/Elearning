@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ type, children, onClick }) => {
+const Button = ({ type, children, onClick, className }) => {
   let btnTypeClass = "";
 
   switch (type) {
@@ -30,7 +30,7 @@ const Button = ({ type, children, onClick }) => {
 
   return (
     <button
-      className={`px-5 py-2 text-sm font-medium tracking-wider duration-300 rounded uppercase  ${btnTypeClass}`}
+      className={`px-5 py-2 text-sm font-medium tracking-wider duration-300 rounded uppercase ${className} ${btnTypeClass} `}
       onClick={onClick}
     >
       {children}
