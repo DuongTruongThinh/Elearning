@@ -60,9 +60,6 @@ export default function TableChoXacThuc() {
         return (
           <div className=" flex space-x-2">
             <Button
-              onClick={() => {
-                handleGhiDanh(user.taiKhoan);
-              }}
               className="text-white bg-green-500 hover:bg-green-700 border-none hover:shadow-lg
             "
             >
