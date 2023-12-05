@@ -4,23 +4,15 @@ import { Button, Table, Tag, message, theme } from "antd";
 import axios from "axios";
 import { BASE_URL, TOKEN_CYBER } from "../../services/config";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function TableUser() {
   const [listUser, setListUser] = useState([]);
-  /**
-   * 1. tạo button delete trong thead và tbody
-   * 2. viết service delete user
-   * 3. gắn vào button
-   * 4. fetch get list sau khi xoá thành công
-   *
-   */
   let { info } = useSelector((state) => {
     return state.userReducer;
   });
   let token = info.accessToken;
-
   let bearerToken = "Bearer " + token;
-
   function fetchListUser() {
     axios
       .get(`${BASE_URL}/QuanLyNguoiDung/LayDanhSachNguoiDung`, {
@@ -72,6 +64,13 @@ export default function TableUser() {
       });
     // gọi api xoá
   };
+  let navigate = useNavigate();
+  let handleEdit = (taiKhoan) => {
+    navigate(`/user-management/edit-user/${taiKhoan}`);
+  };
+  let handleGhiDanh = (taiKhoan) => {
+    navigate(`/user-management/course-registration/${taiKhoan}`);
+  };
   let columnsHeader = [
     {
       title: "Họ tên",
@@ -108,7 +107,7 @@ export default function TableUser() {
           <div className="flex space-x-2">
             <Button
               onClick={() => {
-                handleDelete(user.taiKhoan);
+                handleGhiDanh(user.taiKhoan);
               }}
               className="text-white bg-green-500 hover:bg-green-700 border-none hover:shadow-lg
             "
@@ -117,7 +116,7 @@ export default function TableUser() {
             </Button>
             <Button
               onClick={() => {
-                handleDelete(user.taiKhoan);
+                handleEdit(user.taiKhoan);
               }}
               className="text-white bg-orange-400 hover:bg-orange-600  border-none hover:shadow-lg
             "

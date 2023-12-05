@@ -8,14 +8,14 @@ import { BASE_URL, TOKEN_CYBER } from "../../services/config";
 import { userLocalStorage } from "../../services/localServices";
 import axios from "axios";
 export default function Account() {
-  let params = useParams();
   const [account, setAccount] = useState({});
   const onChange = (key) => {
     console.log(key);
   };
-  let taiKhoan = { taiKhoan: params.id };
   let token = userLocalStorage.get().accessToken;
   let bearerToken = "Bearer " + token;
+  let params = useParams();
+  let taiKhoan = { taiKhoan: params.id };
   useEffect(
     () => {
       axios

@@ -31,7 +31,7 @@ export default function UserManagement() {
                 </p>
               </div>
 
-              <NavLink to={`/`}>
+              <NavLink to={`/user-management/add-user`}>
                 <button
                   type="primary"
                   className="mb-3 px-5 h-10 text-sm font-medium tracking-wider duration-300 border rounded border-green-600   bg-white text-green-600 hover:bg-green-700 hover:text-white"
