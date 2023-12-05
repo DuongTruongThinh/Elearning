@@ -5,16 +5,23 @@ import NavMenu from "./NavMenu";
 import Button from "../../Button/Button";
 import { useSelector } from "react-redux";
 import { userLocalStorage } from "../../../services/localServices";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 const Header = () => {
   let { info } = useSelector((state) => {
     return state.userReducer;
   });
   let navigate = useNavigate();
   // logout
+  let params = useParams();
+  console.log(params);
   let handleLogOut = () => {
-    userLocalStorage.remove();
-    navigate("/");
+    if (Object.keys(params).length > 0) {
+      navigate("/");
+      userLocalStorage.remove();
+    } else {
+      userLocalStorage.remove();
+      window.location.reload();
+    }
   };
   // login
   let handleLogIn = () => navigate("/login");
@@ -23,7 +30,14 @@ const Header = () => {
 
   // Home
   let hocNgay = () => {
-    navigate("/");
+    navigate("/login");
+  };
+  let handleTaiKhoan = () => {
+    if (info.maLoaiNguoiDung == "HV") {
+      return `/account/${info.taiKhoan}`;
+    } else {
+      return `/user-management/${info.taiKhoan}`;
+    }
   };
   // Render tài khoản đăng nhập
   let renderUserNav = () => {
@@ -33,7 +47,7 @@ const Header = () => {
       return (
         <>
           <button className="text-white duration-300 hover:text-white">
-            <NavLink to={`/account/${info.taiKhoan}`} className={classBtn}>
+            <NavLink to={handleTaiKhoan()} className={classBtn}>
               <span className="mr-2">{info.hoTen}</span>
               <i class="fa-solid fa-user-check"></i>
             </NavLink>

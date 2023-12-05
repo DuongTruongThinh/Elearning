@@ -9,6 +9,10 @@ import AdminLayout from "./components/layouts/AdminLayout/AdminLayout";
 import CourseManagement from "./pages/CourseManagement/CourseManagement";
 import AddCourse from "./pages/CourseManagement/AddCourse/AddCourse";
 import EditCourse from "./pages/CourseManagement/EditCourse";
+import UserManagement from "./pages/UserManagement/UserManagement";
+import UserMnEditUser from "./pages/UserMnEditUser/UserMnEditUser";
+import UserMnAddUser from "./pages/UserMnAddUser/UserMnAddUser";
+import UserMnGhiDanh from "./pages/UserMnGhiDanh/UserMnGhiDanh";
 function App() {
   return (
     <BrowserRouter>
@@ -41,6 +45,22 @@ function App() {
             element={<EditCourse></EditCourse>}
           ></Route>
         </Route>
+        <Route
+          path="/user-management/:id"
+          element={<UserManagement></UserManagement>}
+        ></Route>
+        <Route
+          path="/user-management/edit-user/:id"
+          element={<UserMnEditUser></UserMnEditUser>}
+        ></Route>
+        <Route
+          path="/user-management/add-user"
+          element={<UserMnAddUser></UserMnAddUser>}
+        ></Route>
+        <Route
+          path="/user-management/edit-user/:id"
+          element={<UserMnGhiDanh></UserMnGhiDanh>}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );
