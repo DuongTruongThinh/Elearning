@@ -20,26 +20,6 @@ import { useSelector } from "react-redux";
 
 export default function FormGhiDanh() {
   const [listChuaDangKy, setListChuaDangKy] = useState([]);
-  function fetchlistCourse() {
-    axios
-      .post(
-        `${BASE_URL}/QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet`,
-        { taiKhoan: taiKhoan },
-        {
-          headers: {
-            Authorization: bearerToken,
-            TokenCybersoft: TOKEN_CYBER,
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        setListCourse(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
   let { info } = useSelector((state) => {
     return state.userReducer;
   });

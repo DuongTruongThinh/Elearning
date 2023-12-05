@@ -19,7 +19,10 @@ export default function UserManagement() {
                 <i class="fa-solid fa-user"></i> Quản lý người dùng
               </NavLink>
             </div>
-            <NavLink to={`/`} className="pl-10 text-lg text-blue-700">
+            <NavLink
+              to={`/admin/courses`}
+              className="pl-10 text-lg text-blue-700"
+            >
               <i class="fa-solid fa-book-open"></i> Quản lý khóa học
             </NavLink>
           </div>
