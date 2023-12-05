@@ -3,10 +3,20 @@ import Button from "../../components/Button/Button";
 import PageSeparate from "../../components/PageSeparate/PageSeparate";
 import { courseServ } from "../../services/api";
 import { EditFilled, DeleteFilled } from "@ant-design/icons";
+import { notification } from "antd";
 
 const CourseManagement = () => {
   const [catagory, setCatagory] = useState([]);
   const [listCourses, setListCourses] = useState([]);
+
+  const fetchListCourses = async () => {
+    try {
+      const result = await courseServ.getCourses();
+      setListCourses(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     courseServ
       .getCategoryList()
@@ -19,15 +29,32 @@ const CourseManagement = () => {
   }, []);
 
   useEffect(() => {
-    courseServ
-      .getCourses()
-      .then((result) => {
-        setListCourses(result.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    fetchListCourses();
   }, []);
+  const handleDeleteCourse = (id) => {
+    console.log(id);
+    courseServ
+      .deleteCourse(id)
+      .then((result) => {
+        notification.success({
+          message: "Xóa thành công!",
+          style: {
+            margin: 0,
+          },
+        });
+        fetchListCourses();
+      })
+      .catch((error) => {
+        console.log(error);
+        notification.error({
+          message: `${error.response.data}`,
+          style: {
+            margin: "0 !important",
+          },
+          closeIcon: false,
+        });
+      });
+  };
   return (
     <section className="page-section bg-bgColor">
       <div className="page-container">
@@ -65,7 +92,10 @@ const CourseManagement = () => {
                     <Button type="primary">
                       <EditFilled />
                     </Button>
-                    <Button type="red">
+                    <Button
+                      type="red"
+                      onClick={() => handleDeleteCourse(course.maKhoaHoc)}
+                    >
                       <DeleteFilled />
                     </Button>
                   </div>

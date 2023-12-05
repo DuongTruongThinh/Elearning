@@ -9,39 +9,43 @@ import {
   ReadOutlined,
 } from "@ant-design/icons";
 import { ConfigProvider, Layout, Menu, Tooltip, theme } from "antd";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 const { Content, Footer, Sider } = Layout;
 
-const items = [
-  {
-    key: 1,
-    icon: <UserOutlined />,
-    label: "Quản lý người dùng",
-  },
-  {
-    key: 2,
-    icon: <ReadFilled />,
-    label: "Quản lý khóa học",
-    children: [
-      {
-        key: "allCourses",
-        icon: <ReadOutlined />,
-        label: "Tất cả khóa học",
-      },
-      {
-        key: "addCourse",
-        icon: <PlusOutlined />,
-        label: "Thêm khóa học",
-      },
-      {
-        key: "EditCourse",
-        icon: <EditOutlined />,
-        label: "Sửa khóa học",
-      },
-    ],
-  },
-];
 const App = () => {
+  const navigate = useNavigate();
+  const items = [
+    {
+      key: 1,
+      icon: <UserOutlined />,
+      label: "Quản lý người dùng",
+    },
+    {
+      key: 2,
+      icon: <ReadFilled />,
+      label: "Quản lý khóa học",
+      children: [
+        {
+          key: "allCourses",
+          icon: <ReadOutlined />,
+          label: "Tất cả khóa học",
+          onClick: () => navigate("/admin/courses"),
+        },
+        {
+          key: "addCourse",
+          icon: <PlusOutlined />,
+          label: "Thêm khóa học",
+          onClick: () => navigate("/admin/add-course"),
+        },
+        {
+          key: "EditCourse",
+          icon: <EditOutlined />,
+          label: "Sửa khóa học",
+          onClick: () => navigate("/admin/edit-course"),
+        },
+      ],
+    },
+  ];
   const {
     token: { colorBgContainer },
   } = theme.useToken();
