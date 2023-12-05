@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/layouts/Header/Header";
 import Footer from "../../components/layouts/Footer/Footer";
 import "../../styles/components/account.scss";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, Navigate, useNavigate, useParams } from "react-router-dom";
 import { Tabs, message } from "antd";
 import { BASE_URL, TOKEN_CYBER } from "../../services/config";
 import { userLocalStorage } from "../../services/localServices";
@@ -10,15 +10,12 @@ import axios from "axios";
 export default function Account() {
   let params = useParams();
   const [account, setAccount] = useState({});
-  const [refresh, setRefresh] = useState(false);
   const onChange = (key) => {
     console.log(key);
   };
-  let token = userLocalStorage.get().accessToken;
-  console.log(token);
   let taiKhoan = { taiKhoan: params.id };
+  let token = userLocalStorage.get().accessToken;
   let bearerToken = "Bearer " + token;
-  console.log(bearerToken);
   useEffect(
     () => {
       axios
@@ -30,7 +27,6 @@ export default function Account() {
         })
         .then((res) => {
           setAccount(res.data);
-          // console.log(res.data);
         })
         .catch((err) => {
           console.log(err);
@@ -137,7 +133,10 @@ export default function Account() {
 
           {thongTinTaiKhoan.chiTietKhoaHocGhiDanh.map((item, index) => {
             return (
-              <div className="lg:flex md:flex justify-center" key={index}>
+              <div
+                className="lg:flex md:flex justify-center py-3 shadow-sm"
+                key={index}
+              >
                 <div className="w-1/4">
                   <img
                     src={item.hinhAnh}
@@ -194,7 +193,7 @@ export default function Account() {
       </div>
       <div className=" py-10 bg-bgColor">
         <div className="page-container">
-          <div className="bg-white p-10 shadow-md">
+          <div className="bg-white p-10 ">
             <Tabs
               onChange={onChange}
               type="card"

@@ -28,7 +28,6 @@ const FormLogin = () => {
         // đẩy data xuống local storage
         userLocalStorage.set(res.data);
         message.success("Đăng nhập thành công");
-        console.log(res);
         navigate("/");
       })
       .catch((err) => {

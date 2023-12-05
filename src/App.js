@@ -5,6 +5,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Account from "./pages/Account/Account";
 import UpdateAccount from "./pages/UpdateAccount/UpdateAccount";
+import UserManagement from "./pages/UserManagement/UserManagement";
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +18,10 @@ function App() {
         <Route
           path="/update-account/:id"
           element={<UpdateAccount></UpdateAccount>}
+        ></Route>
+        <Route
+          path="/user-management/:id"
+          element={<UserManagement></UserManagement>}
         ></Route>
       </Routes>
     </BrowserRouter>
