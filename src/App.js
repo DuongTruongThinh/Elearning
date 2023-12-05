@@ -7,7 +7,7 @@ import Account from "./pages/Account/Account";
 import UpdateAccount from "./pages/UpdateAccount/UpdateAccount";
 import AdminLayout from "./components/layouts/AdminLayout/AdminLayout";
 import CourseManagement from "./pages/CourseManagement/CourseManagement";
-import AddCourse from "./pages/CourseManagement/AddCourse";
+import AddCourse from "./pages/CourseManagement/AddCourse/AddCourse";
 import EditCourse from "./pages/CourseManagement/EditCourse";
 function App() {
   return (
