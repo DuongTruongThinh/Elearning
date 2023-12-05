@@ -20,7 +20,7 @@ const Header = () => {
       userLocalStorage.remove();
     } else {
       userLocalStorage.remove();
-      location.reload();
+      window.location.reload();
     }
   };
   // login
