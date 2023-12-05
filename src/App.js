@@ -35,7 +35,7 @@ function App() {
           element={<UserMnAddUser></UserMnAddUser>}
         ></Route>
         <Route
-          path="/user-management/edit-user/:id"
+          path="/user-management/course-registration/:id"
           element={<UserMnGhiDanh></UserMnGhiDanh>}
         ></Route>
       </Routes>
