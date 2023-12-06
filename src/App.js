@@ -41,7 +41,7 @@ function App() {
             element={<AddCourse></AddCourse>}
           ></Route>
           <Route
-            path="/admin/edit-course"
+            path="/admin/edit-course/:id"
             element={<EditCourse></EditCourse>}
           ></Route>
         </Route>

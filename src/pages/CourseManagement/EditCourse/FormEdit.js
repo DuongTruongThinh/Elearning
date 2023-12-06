@@ -8,6 +8,7 @@ import {
   InputNumber,
   Select,
   Upload,
+  message,
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import Button from "../../../components/Button/Button";
@@ -16,37 +17,13 @@ import moment from "moment/moment";
 import "moment/locale/vi";
 import { courseServ } from "../../../services/api";
 import { userLocalStorage } from "../../../services/localServices";
-const onFinish = (values) => {
-  const ngayTao = moment(values.ngayTao.$d.toUTCString()).format("L");
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-  const data = {
-    ...values,
-    ngayTao,
-    luotXem: 0,
-    danhGia: 0,
-    taiKhoanNguoiTao: userLocalStorage?.get().taiKhoan,
-  };
-  courseServ
-    .addCourse(data)
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  console.log(data);
-};
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
-const normFile = (e) => {
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
-const FormUpdate = () => {
+const FormEdit = () => {
   const [catagory, setCatagory] = useState([]);
+  const { infoUpdate } = useSelector((state) => state.courseReducer);
+  const navigate = useNavigate();
   useEffect(() => {
     courseServ
       .getCategoryList()
@@ -57,6 +34,30 @@ const FormUpdate = () => {
         console.log(err);
       });
   }, []);
+  const onFinish = (values) => {
+    const data = {
+      ...values,
+      luotXem: 0,
+      danhGia: 0,
+      biDanh: infoUpdate.biDanh,
+      taiKhoanNguoiTao: infoUpdate.nguoiTao.taiKhoan,
+      hinhAnh: infoUpdate.hinhAnh,
+      ngayTao: infoUpdate.ngayTao,
+    };
+    courseServ
+      .editCourse(data)
+      .then((result) => {
+        message.success("Cập nhật thành công");
+        navigate("/admin/courses");
+      })
+      .catch((err) => {
+        console.log(err);
+        message.error(err.response.data);
+      });
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
   return (
     <ConfigProvider
       theme={{
@@ -82,7 +83,11 @@ const FormUpdate = () => {
           span: 24,
         }}
         initialValues={{
-          remember: true,
+          tenKhoaHoc: infoUpdate.tenKhoaHoc,
+          maKhoaHoc: infoUpdate.maKhoaHoc,
+          maDanhMucKhoahoc: infoUpdate.danhMucKhoaHoc.maDanhMucKhoahoc,
+          maNhom: infoUpdate.maNhom,
+          moTa: infoUpdate.moTa,
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
@@ -93,7 +98,7 @@ const FormUpdate = () => {
           colon={false}
           label="Tên khóa học"
           name="tenKhoaHoc"
-          className="font-semibold uppercase col-span-6"
+          className="col-span-6 font-semibold uppercase"
           rules={[
             {
               required: true,
@@ -108,7 +113,7 @@ const FormUpdate = () => {
           colon={false}
           label="Mã khóa học"
           name="maKhoaHoc"
-          className="font-semibold uppercase col-span-6"
+          className="col-span-6 font-semibold uppercase"
           rules={[
             {
               required: true,
@@ -116,17 +121,17 @@ const FormUpdate = () => {
             },
           ]}
         >
-          <Input />
+          <Input disabled />
         </Form.Item>
 
         <Form.Item
           label="Danh Mục Khóa Học"
-          name="maDanhMucKhoaHoc"
-          className="font-semibold uppercase col-span-6"
+          name="maDanhMucKhoahoc"
+          className="col-span-6 font-semibold uppercase"
         >
           <Select>
-            {catagory?.map((item) => (
-              <Select.Option value={item.maDanhMuc}>
+            {catagory?.map((item, index) => (
+              <Select.Option key={index} value={item.maDanhMuc}>
                 {item.tenDanhMuc}
               </Select.Option>
             ))}
@@ -136,7 +141,7 @@ const FormUpdate = () => {
         <Form.Item
           label="Mã nhóm"
           name="maNhom"
-          className="font-semibold uppercase col-span-3"
+          className="col-span-3 font-semibold uppercase"
         >
           <Select value="GP09">
             <Select.Option value="GP09">GP09</Select.Option>
@@ -146,21 +151,20 @@ const FormUpdate = () => {
         <Form.Item
           name="ngayTao"
           label="Ngày tạo"
-          className="font-semibold uppercase col-span-3"
+          className="col-span-3 font-semibold uppercase"
           rules={[
             {
-              required: true,
               message: "Vui lòng nhập chọn ngày tạo",
             },
           ]}
         >
-          <DatePicker />
+          <DatePicker disabled format="DD/MM/YYYY" />
         </Form.Item>
 
         <Form.Item
           label="Mô tả"
           name="moTa"
-          className="font-semibold uppercase col-span-12"
+          className="col-span-12 font-semibold uppercase"
           rules={[
             {
               required: true,
@@ -175,45 +179,23 @@ const FormUpdate = () => {
           colon={false}
           label="Liên kết hình ảnh"
           name="hinhAnh"
-          className="font-semibold uppercase col-span-12"
+          className="col-span-12 font-semibold uppercase"
           rules={[
             {
-              required: true,
               message: "Vui lòng nhập link hình ảnh khóa học",
             },
           ]}
         >
-          <input type="file" />
+          <input type="file" disabled />
         </Form.Item>
-
-        {/* <Form.Item
-          label="Hình ảnh khóa học"
-          name="hinhAnh"
-          valuePropName="fileList"
-          getValueFromEvent={normFile}
-          className="font-semibold uppercase col-span-12"
-        >
-          <Upload action="/upload.do" listType="picture-card">
-            <div>
-              <PlusOutlined />
-              <div
-                style={{
-                  marginTop: 8,
-                }}
-              >
-                Upload
-              </div>
-            </div>
-          </Upload>
-        </Form.Item> */}
 
         <Form.Item className="col-span-12">
           <Button type="primary" htmlType="submit">
-            Thêm khóa học
+            Cập nhật
           </Button>
         </Form.Item>
       </Form>
     </ConfigProvider>
   );
 };
-export default FormUpdate;
+export default FormEdit;

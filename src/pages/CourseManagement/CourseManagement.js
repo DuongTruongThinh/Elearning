@@ -4,11 +4,15 @@ import PageSeparate from "../../components/PageSeparate/PageSeparate";
 import { courseServ } from "../../services/api";
 import { EditFilled, DeleteFilled } from "@ant-design/icons";
 import { notification } from "antd";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { UPDATE_COURSE } from "../../redux/constant/course";
 
 const CourseManagement = () => {
   const [catagory, setCatagory] = useState([]);
   const [listCourses, setListCourses] = useState([]);
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const fetchListCourses = async () => {
     try {
       const result = await courseServ.getCourses();
@@ -31,6 +35,15 @@ const CourseManagement = () => {
   useEffect(() => {
     fetchListCourses();
   }, []);
+
+  const handleAddCourse = () => {
+    navigate("/admin/add-course");
+  };
+
+  const handleEditCourse = (course) => {
+    dispatch({ type: UPDATE_COURSE, payload: course });
+    navigate(`/admin/edit-course/${course.maKhoaHoc}`);
+  };
   const handleDeleteCourse = (id) => {
     console.log(id);
     courseServ
@@ -49,7 +62,7 @@ const CourseManagement = () => {
         notification.error({
           message: `${error.response.data}`,
           style: {
-            margin: "0 !important",
+            margin: "0",
           },
           closeIcon: false,
         });
@@ -60,7 +73,9 @@ const CourseManagement = () => {
       <div className="page-container">
         <div className="flex justify-between">
           <h3 className="font-title font-semibold text-4xl">Khóa học</h3>
-          <Button type="gray-outline">Thêm khóa học</Button>
+          <Button onClick={handleAddCourse} type="gray-outline">
+            Thêm khóa học
+          </Button>
         </div>
 
         <div>
@@ -89,7 +104,10 @@ const CourseManagement = () => {
                     <span className="text-gray-sm">{course.ngayTao}</span>
                   </div>
                   <div className="flex gap-2 mt-auto justify-end">
-                    <Button type="primary">
+                    <Button
+                      type="primary"
+                      onClick={() => handleEditCourse(course)}
+                    >
                       <EditFilled />
                     </Button>
                     <Button

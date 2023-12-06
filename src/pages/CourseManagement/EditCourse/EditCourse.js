@@ -1,14 +1,14 @@
 import React from "react";
-import FormUpdate from "./FormUpdate";
+import FormEdit from "./FormEdit";
 
 const EditCourse = () => {
   return (
     <div className="page-section bg-bgColor">
       <div className="page-container">
-        <h3 className="font-title font-semibold text-4xl">
+        <h3 className="text-4xl font-semibold font-title">
           Chỉnh sửa khóa học
         </h3>
-        <FormUpdate />
+        <FormEdit />
       </div>
     </div>
   );

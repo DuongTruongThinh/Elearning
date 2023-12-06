@@ -126,7 +126,7 @@ const FormAdding = () => {
         >
           <Select>
             {catagory?.map((item) => (
-              <Select.Option value={item.maDanhMuc}>
+              <Select.Option key={item} value={item.maDanhMuc}>
                 {item.tenDanhMuc}
               </Select.Option>
             ))}
