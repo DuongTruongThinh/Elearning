@@ -1,0 +1,75 @@
+.ant-steps-item-title{
+    line-height: 2;
+    font-weight: 700;
+    font-size: 3rem;
+    text-transform: uppercase;
+    
+}
+.ant-steps-item-icon{
+    border-color: rgba(39,44,51,.7);
+}
+.FormRegister{
+    margin: 0 auto;
+}
+
+:where(.css-dev-only-do-not-override-1adbn6x).ant-form-vertical .ant-form-item-label >label, :where(.css-dev-only-do-not-override-1adbn6x).ant-col-24.ant-form-item-label >label, :where(.css-dev-only-do-not-override-1adbn6x).ant-col-xl-24.ant-form-item-label >label{
+    color: #303840;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;    
+}
+:where(.css-dev-only-do-not-override-1adbn6x).ant-form-item .ant-form-item-label >label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+    display: none;
+}
+:where(.css-dev-only-do-not-override-1adbn6x).ant-form-item {
+    margin-bottom: .85rem;
+}
+:where(.css-dev-only-do-not-override-1adbn6x).ant-col-sm-16 {
+    max-width: 100%;
+}
+.card-name{
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: #303840;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.strong{
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+strong.card-header{
+    color: rgba(39,44,51,.7)!important;
+}
+:where(.css-dev-only-do-not-override-1adbn6x).ant-form-item .ant-form-item-explain-error{
+    color:rgb(249 115 22);
+}
+:where(.css-dev-only-do-not-override-1adbn6x).ant-form-vertical .ant-form-item-label, :where(.css-dev-only-do-not-override-1adbn6x).ant-col-24.ant-form-item-label, :where(.css-dev-only-do-not-override-1adbn6x).ant-col-xl-24.ant-form-item-label{
+    padding: 0;
+}
+:where(.css-dev-only-do-not-override-1adbn6x).ant-col-20 {
+    max-width: 100%;
+}
+.login-page-separator{
+    display: flex;
+    align-items: center;
+}
+.login-page-separator:before, .login-page-separator:after{
+    content: "";
+  flex: 1;
+  border-bottom: 1px solid  rgb(156, 163, 175);
+  margin: 1rem 2rem;
+}
+.login-page-separator__text{
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 0 10px;
+    line-height: 1.5;
+    color: #303840;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
