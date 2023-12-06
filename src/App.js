@@ -8,7 +8,7 @@ import UpdateAccount from "./pages/UpdateAccount/UpdateAccount";
 import AdminLayout from "./components/layouts/AdminLayout/AdminLayout";
 import CourseManagement from "./pages/CourseManagement/CourseManagement";
 import AddCourse from "./pages/CourseManagement/AddCourse/AddCourse";
-import EditCourse from "./pages/CourseManagement/EditCourse";
+import EditCourse from "./pages/CourseManagement/EditCourse/EditCourse";
 import UserManagement from "./pages/UserManagement/UserManagement";
 import UserMnEditUser from "./pages/UserMnEditUser/UserMnEditUser";
 import UserMnAddUser from "./pages/UserMnAddUser/UserMnAddUser";

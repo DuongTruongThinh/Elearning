@@ -136,3 +136,13 @@
   .ant-menu-submenu-title {
   padding: 0 10px;
 }
+
+// Hidden asterisk
+
+:where(.css-dev-only-do-not-override-r49ef0).ant-form-item
+  .ant-form-item-label
+  > label.ant-form-item-required:not(
+    .ant-form-item-required-mark-optional
+  )::before {
+  display: none;
+}

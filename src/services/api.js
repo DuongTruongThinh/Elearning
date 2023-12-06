@@ -6,9 +6,10 @@ export const courseServ = {
   getListCourse: () =>
     https.get("/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=ITEC2107"),
   getCategoryList: () => https.get("/QuanLyKhoaHoc/LayDanhMucKhoaHoc"),
-  getCourses: () => https.get("/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP04"),
+  getCourses: () => https.get("/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP09"),
   deleteCourse: (id) =>
     https.delete(`/QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${id}`),
+  addCourse: (data) => https.post("/QuanLyKhoaHoc/ThemKhoaHoc", data),
 };
 export let registerApi = (data) => {
   // Gửi thông tin từ form đăng ký
