@@ -14,8 +14,8 @@ export default function Home() {
       <Header />
       <Banner />
       <BlogsComponent />
-      <FromTheBlogsComponent />
       <FromTheBlogs2Component />
+      {/* <FromTheBlogsComponent /> */}
       <DesginCourseComponent />
       <Feedback />
       <Footer />
