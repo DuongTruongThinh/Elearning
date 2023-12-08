@@ -3,8 +3,8 @@ import { AUTHOR, BASE_URL, TOKEN_CYBER, configHeader, https } from "./config";
 
 export const courseServ = {
   // Lấy một khóa học demo cho detail page
-  getListCourse: () =>
-    https.get("/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=ITEC2107"),
+  getListCourse: (id) =>
+    https.get(`/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${id}`),
   getCategoryList: () => https.get("/QuanLyKhoaHoc/LayDanhMucKhoaHoc"),
   getCourses: () => https.get("/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP09"),
   addCourse: (data) => https.post("/QuanLyKhoaHoc/ThemKhoaHoc", data),

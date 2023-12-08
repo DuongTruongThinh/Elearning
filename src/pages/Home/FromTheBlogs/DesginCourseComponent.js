@@ -10,9 +10,11 @@ import {
   StarBorder,
 } from "@mui/icons-material";
 import { Tooltip } from "antd";
+import { useNavigate } from "react-router-dom";
 
 export default function DesginCourseComponent() {
   const [courses, setCourses] = useState();
+  const navigate = useNavigate();
   useEffect(() => {
     courseServ
       .getCourses()
@@ -23,14 +25,16 @@ export default function DesginCourseComponent() {
         console.log(err);
       });
   }, []);
-  console.log(courses);
   return courses ? (
     <div className="page-section bg-bgColor">
       <div className="page-container">
         <PageSeparate type="gray">Khóa học phổ biến</PageSeparate>
         <div className="grid grid-cols-4 gap-4 ">
           {courses.map((course) => (
-            <div className="col-span-1 flex-col flex overflow-hidden rounded-lg border shadow-md">
+            <div
+              className="col-span-1 flex-col flex overflow-hidden rounded-lg border shadow-md cursor-pointer"
+              onClick={() => navigate(`/detail-course/${course.maKhoaHoc}`)}
+            >
               <img
                 src={course.hinhAnh}
                 className="h-[180px] object-cover w-full"

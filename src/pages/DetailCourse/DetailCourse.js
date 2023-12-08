@@ -9,12 +9,14 @@ import CollapseCourse from "./CollapseCourse";
 import { detailData } from "../../data/DetailData";
 import Feedback from "../../components/layouts/Feedback/Feedback";
 import Footer from "../../components/layouts/Footer/Footer";
+import { useParams } from "react-router-dom";
 
 const DetailCourse = () => {
   const [course, setCourse] = useState({});
+  const { idCourse } = useParams();
   useEffect(() => {
     courseServ
-      .getListCourse()
+      .getListCourse(idCourse)
       .then((result) => {
         setCourse(result.data);
       })
