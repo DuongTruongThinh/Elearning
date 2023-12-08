@@ -1,58 +1,50 @@
 import React from "react";
+import { Subscriptions, Update, VerifiedUser } from "@mui/icons-material";
 
 export default function BlogsComponent() {
   return (
-    <div
-      className="py-6 bg-white page-container"
-      style={{ borderBottom: "2px solid rgb(233, 237, 242)" }}
-    >
-      <div className="container">
+    <div className="page-section bg-white py-5">
+      <div className="page-container">
         <div className="grid grid-cols-3 text-center">
           <div className="col-span-1 flex px-2">
             <div className="h-16 w-16 rounded-[50%] bg-[#5567ff] flex justify-center items-center mr-4">
-              <i class="material-icons text-white">subscriptions</i>
+              <Subscriptions className="text-2xl text-white" />
+              {/* <i class="material-icons text-white">subscriptions</i> */}
             </div>
             <div className="text-left w-[67%]">
-              <div
-                className="pb-1 font-semibold "
-                style={{ fontFamily: "system-ui" }}
-              >
-                8,000+ Course
+              <div className="pb-1 font-title font-semibold  ">
+                8,000+ khóa học
               </div>
               <p className="text-[#272c33b3] text-[13px]">
-                Explore a wide range of skills.
+                Khám phá đa dạng các kỹ năng trong nhiều lĩnh vực khác nhau
               </p>
             </div>
           </div>
           <div className="col-span-1 flex px-2">
             <div className="h-16 w-16 rounded-[50%] bg-[#5567ff] flex justify-center items-center mr-4">
-              <i class="material-icons text-white">verified_user</i>
+              <VerifiedUser className="text-2xl text-white" />
             </div>
             <div className="text-left w-[67%]">
-              <div
-                className="pb-1 font-semibold  "
-                style={{ fontFamily: "system-ui" }}
-              >
-                By Industry Experts
+              <div className="pb-1 font-semibold  font-title  ">
+                Các chuyên gia trong ngành
               </div>
               <p className="text-[#272c33b3] text-[13px]">
-                Professional development from the best people.
+                Lộ trình học chuyên nghiệp với sự hướng dẫn từ những người giỏi
+                nhất
               </p>
             </div>
           </div>
           <div className="col-span-1 flex px-2">
             <div className="h-16 w-16 rounded-[50%] bg-[#5567ff] flex justify-center items-center mr-4">
-              <i class="material-icons text-white">update</i>
+              <Update className="text-2xl text-white" />
             </div>
             <div className="text-left w-[67%]">
-              <div
-                className="pb-1 font-semibold "
-                style={{ fontFamily: "system-ui" }}
-              >
-                Unlimited Access
+              <div className="pb-1 font-semibold  font-title">
+                Truy cập không giới hạn
               </div>
               <p className="text-[#272c33b3] text-[13px]">
-                Unlock Library and learn any topic with one subscription.
+                Mở khóa thư viện và học bất kỳ chủ đề nào chỉ với một lần đăng
+                ký
               </p>
             </div>
           </div>
