@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MenuOutlined, KeyOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import NavMenu from "./NavMenu";
@@ -13,11 +13,11 @@ const Header = () => {
   let navigate = useNavigate();
   // logout
   let params = useParams();
-  console.log(params);
   let handleLogOut = () => {
     if (Object.keys(params).length > 0) {
       navigate("/");
       userLocalStorage.remove();
+      window.location.reload();
     } else {
       userLocalStorage.remove();
       window.location.reload();
@@ -43,7 +43,8 @@ const Header = () => {
   let renderUserNav = () => {
     let classBtn =
       "bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4  hover:border-transparent rounded";
-    if (info) {
+    if (info !== null) {
+      console.log(info);
       return (
         <>
           <button className="text-white duration-300 hover:text-white">

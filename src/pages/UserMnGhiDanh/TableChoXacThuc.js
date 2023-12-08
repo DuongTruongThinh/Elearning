@@ -10,7 +10,6 @@ export default function TableChoXacThuc() {
   let { info } = useSelector((state) => {
     return state.userReducer;
   });
-  console.log(info.taiKhoan);
   let token = info.accessToken;
   let bearerToken = "Bearer " + token;
   function fetchlistCourse() {

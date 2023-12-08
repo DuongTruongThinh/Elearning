@@ -22,11 +22,9 @@ export default function FormEditUser() {
   let { info } = useSelector((state) => {
     return state.userReducer;
   });
-  console.log(info.taiKhoan);
   const [danhSachUser, setDanhSachUser] = useState([]);
   let params = useParams();
   let taiKhoan = params.id;
-  console.log(danhSachUser);
   const { Option } = Select;
   const formItemLayout = {
     labelCol: {
@@ -84,9 +82,7 @@ export default function FormEditUser() {
       return index !== -1 ? index : null;
     }
   };
-  console.log(timTaiKhoan());
   let taiKhoanCanTim = danhSachUser[timTaiKhoan()];
-  console.log(taiKhoanCanTim);
   const FormEditUser = () => {
     const [form] = Form.useForm();
     let navigate = useNavigate();
