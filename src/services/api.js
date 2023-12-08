@@ -6,7 +6,7 @@ export const courseServ = {
   getListCourse: () =>
     https.get("/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=ITEC2107"),
   getCategoryList: () => https.get("/QuanLyKhoaHoc/LayDanhMucKhoaHoc"),
-  getCourses: () => https.get("/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01"),
+  getCourses: () => https.get("/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP09"),
   addCourse: (data) => https.post("/QuanLyKhoaHoc/ThemKhoaHoc", data),
   editCourse: (data) => https.put("/QuanLyKhoaHoc/CapNhatKhoaHoc", data),
   deleteCourse: (id) =>
