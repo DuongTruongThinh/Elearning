@@ -45,7 +45,6 @@ const CourseManagement = () => {
     navigate(`/admin/edit-course/${course.maKhoaHoc}`);
   };
   const handleDeleteCourse = (id) => {
-    console.log(id);
     courseServ
       .deleteCourse(id)
       .then((result) => {

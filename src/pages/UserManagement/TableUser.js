@@ -44,8 +44,6 @@ export default function TableUser() {
       });
   }, []);
   let handleDelete = (taiKhoan) => {
-    console.log(TOKEN_CYBER);
-    console.log(bearerToken);
     axios
       .delete(
         `${BASE_URL}/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,

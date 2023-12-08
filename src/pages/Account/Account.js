@@ -47,7 +47,6 @@ export default function Account() {
         },
       })
       .then((res) => {
-        console.log(res);
         message.success("Hủy thành công");
         axios
           .post(`${BASE_URL}/QuanLyNguoiDung/ThongTinTaiKhoan`, taiKhoan, {
@@ -122,7 +121,6 @@ export default function Account() {
     }
   };
   let renderKhoaHoc = (thongTinTaiKhoan) => {
-    console.log(thongTinTaiKhoan);
     if (
       thongTinTaiKhoan != null &&
       thongTinTaiKhoan.chiTietKhoaHocGhiDanh != null

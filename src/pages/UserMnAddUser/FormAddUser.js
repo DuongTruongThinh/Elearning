@@ -22,7 +22,6 @@ export default function FormAddUser() {
   let { info } = useSelector((state) => {
     return state.userReducer;
   });
-  console.log(info.taiKhoan);
   const [danhSachUser, setDanhSachUser] = useState([]);
   let params = useParams();
   let taiKhoan = params.id;
