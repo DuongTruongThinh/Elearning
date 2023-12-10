@@ -6,9 +6,7 @@ import FormLogin from "./FormLogin";
 export default function Login() {
   return (
     <div>
-      <Header></Header>
       <FormLogin></FormLogin>
-      <Footer></Footer>
     </div>
   );
 }

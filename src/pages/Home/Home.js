@@ -11,14 +11,12 @@ import Feedback from "../../components/layouts/Feedback/Feedback";
 export default function Home() {
   return (
     <div>
-      <Header />
       <Banner />
       <BlogsComponent />
       <FromTheBlogs2Component />
       {/* <FromTheBlogsComponent /> */}
       <DesginCourseComponent />
       <Feedback />
-      <Footer />
     </div>
   );
 }

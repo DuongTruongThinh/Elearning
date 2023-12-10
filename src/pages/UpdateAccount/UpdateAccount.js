@@ -5,10 +5,8 @@ import FormUpdateAccount from "./FormUpdateAccount";
 
 export default function UpdateAccount() {
   return (
-    <div>
-      <Header></Header>
+    <>
       <FormUpdateAccount></FormUpdateAccount>
-      <Footer></Footer>
-    </div>
+    </>
   );
 }

@@ -171,7 +171,6 @@ export default function Account() {
   };
   return (
     <div>
-      <Header></Header>
       <div className="border-b border-gray-400">
         <div className="page-container ">
           <div className="pt-24 pb-10 lg:flex justify-between items-center lg:flex-row-reverse">
@@ -214,8 +213,6 @@ export default function Account() {
           </div>
         </div>
       </div>
-
-      <Footer></Footer>
     </div>
   );
 }

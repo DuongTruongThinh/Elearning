@@ -50,13 +50,13 @@ const Header = () => {
           <button className="text-white duration-300 hover:text-white">
             <NavLink to={handleTaiKhoan()} className={classBtn}>
               <span className="mr-2">{info.hoTen}</span>
-              <i class="fa-solid fa-user-check"></i>
+              <i className="fa-solid fa-user-check"></i>
             </NavLink>
           </button>
 
           <button onClick={handleLogOut} className={classBtn}>
             <span className="mr-2">Đăng xuất</span>
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <i className="fa-solid fa-arrow-right-from-bracket"></i>
           </button>
         </>
       );
@@ -88,11 +88,11 @@ const Header = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex items-center h-16 gap-5 px-5 text-white bg-navbar">
-      {/* Toggle Button */}
-      <MenuOutlined className="cursor-pointer" />
-
       {/* Logo */}
-      <div className="flex items-center text-lg font-bold cursor-pointer">
+      <div
+        className="flex items-center text-lg font-bold cursor-pointer"
+        onClick={() => navigate("/")}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           x="0px"

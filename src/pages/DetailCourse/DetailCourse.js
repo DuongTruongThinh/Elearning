@@ -27,8 +27,6 @@ const DetailCourse = () => {
   return (
     course && (
       <div>
-        <Header />
-
         <div className="py-16 mt-16 bg-primary">
           <div className="page-container ">
             <h2 className="mb-4 text-5xl lg:text-6xl font-semibold text-white">
@@ -183,8 +181,6 @@ const DetailCourse = () => {
         </section>
 
         <Feedback></Feedback>
-
-        <Footer />
       </div>
     )
   );

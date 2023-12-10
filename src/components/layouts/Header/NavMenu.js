@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ConfigProvider, Menu, Popover } from "antd";
 import { courseServ } from "../../../services/api";
+import { Link, useNavigate } from "react-router-dom";
 const items = [
   {
     label: "Trang chủ",
@@ -23,6 +24,7 @@ const items = [
 const NavMenu = () => {
   const [current, setCurrent] = useState("home");
   const [category, setCategory] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     courseServ
       .getCategoryList()
@@ -36,12 +38,14 @@ const NavMenu = () => {
   const content = (
     <div>
       {category.map((item) => (
-        <button
+        <Link
+          to={`/courses/${item.maDanhMuc}`}
           className="text-base px-2 py-2 block text-gray-500 hover:text-black duration-100"
           key={item.maDanhMuc}
+          onClick={() => navigate("/")}
         >
           {item.tenDanhMuc}
-        </button>
+        </Link>
       ))}
     </div>
   );

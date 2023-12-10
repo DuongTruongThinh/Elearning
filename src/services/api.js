@@ -1,10 +1,13 @@
 import axios from "axios";
-import { AUTHOR, BASE_URL, TOKEN_CYBER, configHeader, https } from "./config";
+import { BASE_URL, TOKEN_CYBER, configHeader, https } from "./config";
 
 export const courseServ = {
-  // Lấy một khóa học demo cho detail page
   getListCourse: (id) =>
     https.get(`/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${id}`),
+  getListCourseWithPaginate: (page) =>
+    https.get(
+      `/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang?page=${page}&pageSize=8&MaNhom=GP09`
+    ),
   getCategoryList: () => https.get("/QuanLyKhoaHoc/LayDanhMucKhoaHoc"),
   getCourses: () => https.get("/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP09"),
   addCourse: (data) => https.post("/QuanLyKhoaHoc/ThemKhoaHoc", data),
