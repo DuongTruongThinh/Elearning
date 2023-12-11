@@ -9,6 +9,10 @@ export const courseServ = {
       `/QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang?page=${page}&pageSize=8&MaNhom=GP09`
     ),
   getCategoryList: () => https.get("/QuanLyKhoaHoc/LayDanhMucKhoaHoc"),
+  getCourseFromCategory: (courseCode) =>
+    https.get(
+      `/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc?maDanhMuc=${courseCode}&MaNhom=GP09`
+    ),
   getCourses: () => https.get("/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP09"),
   addCourse: (data) => https.post("/QuanLyKhoaHoc/ThemKhoaHoc", data),
   editCourse: (data) => https.put("/QuanLyKhoaHoc/CapNhatKhoaHoc", data),

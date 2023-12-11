@@ -14,12 +14,11 @@ import UserMnEditUser from "./pages/UserMnEditUser/UserMnEditUser";
 import UserMnAddUser from "./pages/UserMnAddUser/UserMnAddUser";
 import UserMnGhiDanh from "./pages/UserMnGhiDanh/UserMnGhiDanh";
 import DefaultLayout from "./components/layouts/DefaultLayout/DefaultLayout";
+import Courses from "./pages/Courses/Courses";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Courses */}
-
         <Route path={""} element={<DefaultLayout />}>
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
@@ -33,6 +32,15 @@ function App() {
           <Route
             path="/detail-course/:idCourse"
             element={<DetailCourse />}
+          ></Route>
+        </Route>
+
+        {/* Courses */}
+
+        <Route path="/courses" element={<DefaultLayout />}>
+          <Route
+            path="/courses/:courseCode"
+            element={<Courses></Courses>}
           ></Route>
         </Route>
 
