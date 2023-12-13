@@ -17,7 +17,7 @@ const Banner = () => {
           chuyên gia trong ngành. <br /> Khám phá một loạt các kỹ năng với các
           hướng dẫn chuyên nghiệp của chúng tôi.
         </p>
-        <Button>KHÁM PHÁ KHÓA HỌC</Button>
+        <Button onClick={() => navigate("/courses")}>KHÁM PHÁ KHÓA HỌC</Button>
         {!userLocalStorage.get() && (
           <button onClick={() => navigate("/login")} className="block mt-4">
             Bạn là giáo viên?

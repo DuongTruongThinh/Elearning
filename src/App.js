@@ -15,9 +15,12 @@ import UserMnAddUser from "./pages/UserMnAddUser/UserMnAddUser";
 import UserMnGhiDanh from "./pages/UserMnGhiDanh/UserMnGhiDanh";
 import DefaultLayout from "./components/layouts/DefaultLayout/DefaultLayout";
 import Courses from "./pages/Courses/Courses";
+import Spinner from "./components/Spinner/Spinner";
 function App() {
   return (
     <BrowserRouter>
+      <Spinner />
+
       <Routes>
         <Route path={""} element={<DefaultLayout />}>
           <Route path="/" element={<Home></Home>}></Route>
