@@ -10,7 +10,6 @@ import {
   StarBorder,
 } from "@mui/icons-material";
 import { Tooltip } from "antd";
-import { LearningPathData } from "../../data/HomeData";
 
 const Courses = () => {
   const [listCode, setListCode] = useState([]);

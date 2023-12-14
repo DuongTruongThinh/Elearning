@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   UserOutlined,
   SearchOutlined,
@@ -10,6 +10,7 @@ import {
 } from "@ant-design/icons";
 import { ConfigProvider, Layout, Menu, Tooltip, theme } from "antd";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import Search from "../../Search";
 const { Content, Footer, Sider } = Layout;
 
 const App = () => {
@@ -37,18 +38,13 @@ const App = () => {
           label: "Thêm khóa học",
           onClick: () => navigate("/admin/add-course"),
         },
-        {
-          key: "EditCourse",
-          icon: <EditOutlined />,
-          label: "Sửa khóa học",
-          onClick: () => navigate("/admin/edit-course"),
-        },
       ],
     },
   ];
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
   return (
     <ConfigProvider
       theme={{
@@ -71,12 +67,8 @@ const App = () => {
           }}
           breakpoint="lg"
           collapsedWidth="0"
-          onBreakpoint={(broken) => {
-            console.log(broken);
-          }}
-          onCollapse={(collapsed, type) => {
-            console.log(collapsed, type);
-          }}
+          onBreakpoint={(broken) => {}}
+          onCollapse={(collapsed, type) => {}}
           width={220}
         >
           <Link
@@ -135,7 +127,7 @@ const App = () => {
         </Sider>
         <Layout>
           <div className="pl-[240px] bg-bgColor pr-12 py-3 flex justify-between items-center">
-            <div className="w-60 flex items-center justify-between bg-slate-200 rounded">
+            {/* <div className="w-60 flex items-center justify-between bg-slate-200 rounded">
               <input
                 type="text"
                 placeholder="Tìm kiếm khóa học..."
@@ -144,7 +136,8 @@ const App = () => {
               <button className="p-2 text-lg">
                 <SearchOutlined />
               </button>
-            </div>
+            </div> */}
+            <Search />
             <div>
               <Tooltip
                 title="Đăng nhập"
@@ -152,7 +145,7 @@ const App = () => {
                 overlayInnerStyle={{ color: "black", fontWeight: 500 }}
               >
                 <button
-                  onClick={() => console.log("test")}
+                  // onClick={() => console.log("test")}
                   className="text-gray-400 duration-300 hover:text-white"
                 >
                   <KeyOutlined className="text-xl " />

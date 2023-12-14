@@ -4,7 +4,6 @@ import "../../styles/components/register.scss";
 const StepRegister = () => {
   const [current, setCurrent] = useState(0);
   const onChange = (value) => {
-    console.log("onChange:", value);
     setCurrent(value);
   };
   return (

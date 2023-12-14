@@ -21,7 +21,6 @@ export default function TableUser() {
         },
       })
       .then((res) => {
-        console.log(res);
         setListUser(res.data);
       })
       .catch((err) => {
@@ -36,7 +35,6 @@ export default function TableUser() {
         },
       })
       .then((res) => {
-        console.log(res);
         setListUser(res.data);
       })
       .catch((err) => {

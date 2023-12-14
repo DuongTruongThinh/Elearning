@@ -69,7 +69,6 @@ export default function FormEditUser() {
       },
     })
       .then((res) => {
-        console.log(res);
         setDanhSachUser(res.data);
       })
       .catch((err) => {
@@ -87,7 +86,6 @@ export default function FormEditUser() {
     const [form] = Form.useForm();
     let navigate = useNavigate();
     const onFinish = (values) => {
-      console.log("Received values of form: ", values);
       axios
         .put(
           `${BASE_URL}/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
@@ -109,7 +107,6 @@ export default function FormEditUser() {
         )
         .then((res) => {
           message.success("Cập nhật thành công");
-          console.log(res);
           navigate(`/user-management/${info.taiKhoan}`);
         })
         .catch((err) => {

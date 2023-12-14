@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { ClipLoader } from "react-spinners";
+import { ClockLoader } from "react-spinners";
 
 const Spinner = () => {
   let { isLoading } = useSelector((state) => state.spinnerReducer);
@@ -16,10 +16,10 @@ const Spinner = () => {
         position: "fixed",
         top: 0,
         left: 0,
-        zIndex: 99,
+        zIndex: 99999,
       }}
     >
-      <ClipLoader size={150} color="#5567ff" />
+      <ClockLoader size={100} color="#5567ff" />
     </div>
   ) : (
     <></>

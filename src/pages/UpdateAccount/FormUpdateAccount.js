@@ -55,7 +55,6 @@ const FormUpdateAccount = () => {
   const [form] = Form.useForm();
   let navigate = useNavigate();
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
     axios
       .put(
         `${BASE_URL}/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
@@ -77,7 +76,6 @@ const FormUpdateAccount = () => {
       )
       .then((res) => {
         message.success("Cập nhật thành công");
-        console.log(res);
         navigate("/login");
       })
       .catch((err) => {

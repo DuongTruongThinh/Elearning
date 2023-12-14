@@ -22,7 +22,6 @@ export default function TableChoXacThuc() {
         }
       )
       .then((res) => {
-        console.log(res);
         setListCourse(res.data);
       })
       .catch((err) => {
@@ -39,7 +38,6 @@ export default function TableChoXacThuc() {
         }
       )
       .then((res) => {
-        console.log(res);
         setListCourse(res.data);
       })
       .catch((err) => {

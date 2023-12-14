@@ -9,14 +9,11 @@ import { Button, Form, Input, message } from "antd";
 import { SET_INFO } from "../../redux/constant/user";
 import { userLocalStorage } from "../../services/localServices";
 
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
+const onFinishFailed = (errorInfo) => {};
 const FormLogin = () => {
   let dispatch = useDispatch();
   let navigate = useNavigate();
   const onFinish = (values) => {
-    console.log("Success:", values);
     axios
       .post(`${BASE_URL}/QuanLyNguoiDung/DangNhap`, values, {
         headers: configHeader(),

@@ -69,7 +69,6 @@ export default function FormGhiDanh() {
         }
       )
       .then((res) => {
-        console.log(res);
         setListChuaDangKy(res.data);
       })
       .catch((err) => {
@@ -81,7 +80,6 @@ export default function FormGhiDanh() {
     let navigate = useNavigate();
 
     const onFinish = (values) => {
-      console.log("Received values of form: ", values);
       axios
         .post(
           `${BASE_URL}/QuanLyKhoaHoc/GhiDanhKhoaHoc`,

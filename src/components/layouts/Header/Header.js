@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import { MenuOutlined, KeyOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import NavMenu from "./NavMenu";
+import Search from "../../Search";
 import Button from "../../Button/Button";
 import { useSelector } from "react-redux";
 import { userLocalStorage } from "../../../services/localServices";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-const Header = () => {
+const Header = ({ isChangeHeader }) => {
   let { info } = useSelector((state) => {
     return state.userReducer;
   });
+  const [showNavbar, setShowNavbar] = useState(false);
   let navigate = useNavigate();
   // logout
   let params = useParams();
@@ -33,7 +35,7 @@ const Header = () => {
     navigate("/login");
   };
   let handleTaiKhoan = () => {
-    if (info.maLoaiNguoiDung == "HV") {
+    if (info.maLoaiNguoiDung === "HV") {
       return `/account/${info.taiKhoan}`;
     } else {
       return `/user-management/${info.taiKhoan}`;
@@ -44,7 +46,6 @@ const Header = () => {
     let classBtn =
       "bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4  hover:border-transparent rounded";
     if (info !== null) {
-      console.log(info);
       return (
         <>
           <button className="text-white duration-300 hover:text-white">
@@ -69,6 +70,9 @@ const Header = () => {
           <button className={classBtn} onClick={handleRegister}>
             Đăng ký
           </button>
+          <Button type="outline" onClick={hocNgay}>
+            Học ngay
+          </Button>
           {/* <Tooltip
             title="Đăng nhập"
             color="#fff"
@@ -86,8 +90,26 @@ const Header = () => {
     }
   };
 
+  const changeBgHeader = () => {
+    if (window.scrollY >= 66) {
+      setShowNavbar(true);
+    } else {
+      setShowNavbar(false);
+    }
+  };
+  useEffect(() => {
+    changeBgHeader();
+    window.addEventListener("scroll", changeBgHeader);
+  }, []);
+
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex items-center h-16 gap-5 px-5 text-white bg-navbar">
+    <div
+      className={`fixed top-0 left-0 right-0 z-50 flex items-center h-16 gap-5 px-5 text-white duration-300  ${
+        isChangeHeader
+          ? `${showNavbar ? "bg-navbar" : "bg-transparent"}`
+          : "bg-navbar"
+      }    `}
+    >
       {/* Logo */}
       <div
         className="flex items-center text-lg font-bold cursor-pointer"
@@ -137,11 +159,9 @@ const Header = () => {
 
       {/* Menu */}
       <NavMenu />
+      <Search />
       <div className="flex items-center gap-3 ml-auto">
         <div>{renderUserNav()}</div>
-        <Button type="outline" onClick={hocNgay}>
-          Học ngay
-        </Button>
       </div>
     </div>
   );

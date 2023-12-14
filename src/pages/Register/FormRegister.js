@@ -51,11 +51,9 @@ const FormRegister = () => {
   const [form] = Form.useForm();
   let navigate = useNavigate();
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
     registerApi(values)
       .then((res) => {
         message.success("Đăng ký thành công");
-        console.log(res);
         navigate("/login");
       })
       .catch((err) => {

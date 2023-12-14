@@ -15,6 +15,7 @@ import UserMnAddUser from "./pages/UserMnAddUser/UserMnAddUser";
 import UserMnGhiDanh from "./pages/UserMnGhiDanh/UserMnGhiDanh";
 import DefaultLayout from "./components/layouts/DefaultLayout/DefaultLayout";
 import Courses from "./pages/Courses/Courses";
+import AllCourses from "./pages/Courses/AllCourses";
 import Spinner from "./components/Spinner/Spinner";
 function App() {
   return (
@@ -22,8 +23,8 @@ function App() {
       <Spinner />
 
       <Routes>
+        <Route path="" element={<Home></Home>}></Route>
         <Route path={""} element={<DefaultLayout />}>
-          <Route path="/" element={<Home></Home>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/register" element={<Register></Register>}></Route>
 
@@ -41,6 +42,7 @@ function App() {
         {/* Courses */}
 
         <Route path="/courses" element={<DefaultLayout />}>
+          <Route path="/courses" element={<AllCourses></AllCourses>}></Route>
           <Route
             path="/courses/:courseCode"
             element={<Courses></Courses>}

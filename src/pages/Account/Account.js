@@ -9,9 +9,7 @@ import { userLocalStorage } from "../../services/localServices";
 import axios from "axios";
 export default function Account() {
   const [account, setAccount] = useState({});
-  const onChange = (key) => {
-    console.log(key);
-  };
+  const onChange = (key) => {};
   let token = userLocalStorage.get().accessToken;
   let bearerToken = "Bearer " + token;
   let params = useParams();

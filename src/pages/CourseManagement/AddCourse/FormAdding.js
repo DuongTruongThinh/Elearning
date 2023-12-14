@@ -34,7 +34,14 @@ const onFinish = (values) => {
     .catch((err) => {
       console.log(err);
     });
-  console.log(data);
+  courseServ
+    .addImageCourse(values.hinhAnh)
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
@@ -185,27 +192,6 @@ const FormAdding = () => {
         >
           <input type="file" />
         </Form.Item>
-
-        {/* <Form.Item
-          label="Hình ảnh khóa học"
-          name="hinhAnh"
-          valuePropName="fileList"
-          getValueFromEvent={normFile}
-          className="font-semibold uppercase col-span-12"
-        >
-          <Upload action="/upload.do" listType="picture-card">
-            <div>
-              <PlusOutlined />
-              <div
-                style={{
-                  marginTop: 8,
-                }}
-              >
-                Upload
-              </div>
-            </div>
-          </Upload>
-        </Form.Item> */}
 
         <Form.Item className="col-span-12">
           <Button type="primary" htmlType="submit">

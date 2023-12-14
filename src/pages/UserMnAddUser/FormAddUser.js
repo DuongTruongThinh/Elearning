@@ -25,7 +25,6 @@ export default function FormAddUser() {
   const [danhSachUser, setDanhSachUser] = useState([]);
   let params = useParams();
   let taiKhoan = params.id;
-  console.log(danhSachUser);
   const { Option } = Select;
   const formItemLayout = {
     labelCol: {
@@ -62,7 +61,6 @@ export default function FormAddUser() {
     const [form] = Form.useForm();
     let navigate = useNavigate();
     const onFinish = (values) => {
-      console.log("Received values of form: ", values);
       axios
         .post(
           `${BASE_URL}/QuanLyNguoiDung/ThemNguoiDung`,
@@ -84,7 +82,6 @@ export default function FormAddUser() {
         )
         .then((res) => {
           message.success("Cập nhật thành công");
-          console.log(res);
           navigate(`/user-management/${info.taiKhoan}`);
         })
         .catch((err) => {

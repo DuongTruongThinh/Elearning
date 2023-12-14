@@ -28,7 +28,6 @@ export default function TableDaGhiDanh() {
         }
       )
       .then((res) => {
-        console.log(res);
         setListCourse(res.data);
       })
       .catch((err) => {
@@ -45,7 +44,6 @@ export default function TableDaGhiDanh() {
         }
       )
       .then((res) => {
-        console.log(res);
         setListCourse(res.data);
       })
       .catch((err) => {
@@ -65,7 +63,6 @@ export default function TableDaGhiDanh() {
         }
       )
       .then((res) => {
-        console.log(res);
         message.success("Xóa thành công");
         fetchlistCourse();
       })

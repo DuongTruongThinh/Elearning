@@ -13,6 +13,8 @@ export const courseServ = {
     https.get(
       `/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc?maDanhMuc=${courseCode}&MaNhom=GP09`
     ),
+  addImageCourse: (image) =>
+    https.post("/QuanLyKhoaHoc/ThemKhoaHocUploadHinh", image),
   getCourses: () => https.get("/QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP09"),
   addCourse: (data) => https.post("/QuanLyKhoaHoc/ThemKhoaHoc", data),
   editCourse: (data) => https.put("/QuanLyKhoaHoc/CapNhatKhoaHoc", data),
