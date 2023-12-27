@@ -65,7 +65,7 @@ function App() {
         </Route>
 
         <Route
-          path="/user-management/:id"
+          path="/user-management"
           element={<UserManagement></UserManagement>}
         ></Route>
         <Route

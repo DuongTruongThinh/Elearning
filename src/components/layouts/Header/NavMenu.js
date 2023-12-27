@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { ConfigProvider, Menu, Popover } from "antd";
+import { ConfigProvider, Menu, Popover, message } from "antd";
 import { courseServ } from "../../../services/api";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 const items = [
   {
     label: "Khóa học",
@@ -48,6 +48,8 @@ const NavMenu = () => {
   const onClick = (e) => {
     setCurrent(e.key);
   };
+  const handleFeatureDeveloping = () =>
+    message.warning("Chức năng đang được cập nhật!");
   return (
     <ConfigProvider
       theme={{
@@ -89,7 +91,11 @@ const NavMenu = () => {
               </Menu.Item>
             );
           } else {
-            return <Menu.Item key={item.key}>{item.label}</Menu.Item>;
+            return (
+              <Menu.Item onClick={handleFeatureDeveloping} key={item.key}>
+                {item.label}
+              </Menu.Item>
+            );
           }
         })}
       </Menu>

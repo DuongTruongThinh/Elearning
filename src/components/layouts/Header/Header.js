@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { MenuOutlined, KeyOutlined } from "@ant-design/icons";
-import { Tooltip } from "antd";
+import { Tooltip, Popover, ConfigProvider, message } from "antd";
+import {
+  LockOpen,
+  ChatBubble,
+  NotificationsRounded,
+} from "@mui/icons-material";
 import NavMenu from "./NavMenu";
 import Search from "../../Search";
 import Button from "../../Button/Button";
 import { useSelector } from "react-redux";
 import { userLocalStorage } from "../../../services/localServices";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 const Header = ({ isChangeHeader }) => {
-  let { info } = useSelector((state) => {
-    return state.userReducer;
-  });
+  const { info } = useSelector((state) => state.userReducer);
   const [showNavbar, setShowNavbar] = useState(false);
-  let navigate = useNavigate();
-  // logout
-  let params = useParams();
-  let handleLogOut = () => {
+  const navigate = useNavigate();
+  const params = useParams();
+  console.log(params);
+  const handleLogOut = () => {
     if (Object.keys(params).length > 0) {
       navigate("/");
       userLocalStorage.remove();
@@ -25,66 +27,139 @@ const Header = ({ isChangeHeader }) => {
       window.location.reload();
     }
   };
-  // login
-  let handleLogIn = () => navigate("/login");
-  // register
-  let handleRegister = () => navigate("/register");
+  const handleLogIn = () => navigate("/login");
+  const handleRegister = () => navigate("/register");
+  const handleFeatureDeveloping = () =>
+    message.warning("Chức năng đang được cập nhật!");
 
-  // Home
-  let hocNgay = () => {
-    navigate("/login");
-  };
-  let handleTaiKhoan = () => {
-    if (info.maLoaiNguoiDung === "HV") {
-      return `/account/${info.taiKhoan}`;
-    } else {
-      return `/user-management/${info.taiKhoan}`;
-    }
-  };
+  const content = (
+    <>
+      {info?.maLoaiNguoiDung === "GV" && (
+        <>
+          <Link
+            to="/user-management"
+            className="text-base px-2 py-2 block text-gray-500 hover:text-black duration-100 "
+            onClick={() => navigate("/")}
+          >
+            Quản lý người dùng
+          </Link>
+          <Link
+            to="/admin/courses"
+            className="text-base px-2 py-2 block text-gray-500 hover:text-black duration-100 "
+            onClick={() => navigate("/")}
+          >
+            Quản lý khóa học
+          </Link>
+        </>
+      )}
+      <Link
+        to=""
+        className="text-base px-2 py-2 block text-gray-500 hover:text-black duration-100 "
+        onClick={handleFeatureDeveloping}
+      >
+        Thông tin cá nhân
+      </Link>
+      <Link
+        to=""
+        className="text-base px-2 py-2 block text-gray-500 hover:text-black duration-100"
+        onClick={handleFeatureDeveloping}
+      >
+        Khóa học của tôi
+      </Link>
+      <Link
+        to=""
+        className="text-base px-2 py-2 block text-gray-500 hover:text-black duration-100"
+        onClick={handleFeatureDeveloping}
+      >
+        Cài đặt
+      </Link>
+      <Link
+        className="text-base px-2 py-2 block text-gray-500 hover:text-black duration-100"
+        onClick={handleLogOut}
+      >
+        Đăng xuất
+      </Link>
+    </>
+  );
   // Render tài khoản đăng nhập
   let renderUserNav = () => {
-    let classBtn =
-      "bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4  hover:border-transparent rounded";
     if (info !== null) {
       return (
-        <>
-          <button className="text-white duration-300 hover:text-white">
-            <NavLink to={handleTaiKhoan()} className={classBtn}>
-              <span className="mr-2">{info.hoTen}</span>
-              <i className="fa-solid fa-user-check"></i>
-            </NavLink>
-          </button>
+        <div className="flex gap-2">
+          <Tooltip
+            title="Tin nhắn"
+            color="#fff"
+            overlayInnerStyle={{ color: "black", fontWeight: 500 }}
+          >
+            <button
+              onClick={handleFeatureDeveloping}
+              className="text-gray-200 duration-300 hover:text-white mr-1 pseudo-count relative"
+            >
+              <ChatBubble fontSize="medium" />
+              <span className="bg-red-500 text-white px-[6px] py-[2px] rounded-full text-xs inline-block absolute top-0  -right-1">
+                9
+              </span>
+            </button>
+          </Tooltip>
 
-          <button onClick={handleLogOut} className={classBtn}>
-            <span className="mr-2">Đăng xuất</span>
-            <i className="fa-solid fa-arrow-right-from-bracket"></i>
-          </button>
-        </>
+          <Tooltip
+            title="Thông báo"
+            color="#fff"
+            overlayInnerStyle={{ color: "black", fontWeight: 500 }}
+          >
+            <button
+              onClick={handleFeatureDeveloping}
+              className="text-gray-200 duration-300 hover:text-white mr-1 pseudo-count relative"
+            >
+              <NotificationsRounded fontSize="large" />
+              <span className="bg-red-500 text-white px-[6px] py-[2px] rounded-full text-xs inline-block absolute top-0 -right-1">
+                15
+              </span>
+            </button>
+          </Tooltip>
+
+          <span className="cursor-pointer">
+            <ConfigProvider
+              theme={{
+                token: {
+                  sizePopupArrow: 20,
+                },
+              }}
+            >
+              <Popover
+                content={content}
+                trigger="click"
+                placement="bottomLeft"
+                className="shadow-sm"
+              >
+                <img
+                  className="w-12 h-12 rounded-full"
+                  src="https://img.icons8.com/plasticine/100/user-male-circle.png"
+                  alt="user-male-circle"
+                />
+              </Popover>
+            </ConfigProvider>
+          </span>
+        </div>
       );
     } else {
       return (
         <>
-          <button onClick={handleLogIn} className={classBtn}>
-            Đăng nhập
-          </button>
-          <button className={classBtn} onClick={handleRegister}>
-            Đăng ký
-          </button>
-          <Button type="outline" onClick={hocNgay}>
-            Học ngay
-          </Button>
-          {/* <Tooltip
+          <Tooltip
             title="Đăng nhập"
             color="#fff"
             overlayInnerStyle={{ color: "black", fontWeight: 500 }}
           >
             <button
               onClick={handleLogIn}
-              className="text-gray-400 duration-300 hover:text-white"
+              className="text-gray-400 duration-300 hover:text-white mr-5"
             >
-              <KeyOutlined className="text-xl " />
+              <LockOpen className="text-xl " />
             </button>
-          </Tooltip> */}
+          </Tooltip>
+          <Button type="outline" onClick={handleRegister}>
+            Học ngay
+          </Button>
         </>
       );
     }
