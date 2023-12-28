@@ -1,21 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {
-  AutoComplete,
-  Button,
-  Cascader,
-  Checkbox,
-  Col,
-  Form,
-  Input,
-  InputNumber,
-  Row,
-  Select,
-  message,
-} from "antd";
+import { Button, Form, Input, Select, message } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
-import { userLocalStorage } from "../../services/localServices";
+import { userLocalStorage } from "../../../../services/localServices";
 import axios from "axios";
-import { BASE_URL, TOKEN_CYBER } from "../../services/config";
+import { BASE_URL, TOKEN_CYBER } from "../../../../services/config";
 import { useSelector } from "react-redux";
 
 export default function FormEditUser() {
@@ -77,7 +65,7 @@ export default function FormEditUser() {
   }, []);
   let timTaiKhoan = () => {
     if (danhSachUser != null) {
-      let index = danhSachUser.findIndex((item) => item.taiKhoan == taiKhoan);
+      let index = danhSachUser.findIndex((item) => item.taiKhoan === taiKhoan);
       return index !== -1 ? index : null;
     }
   };
@@ -129,7 +117,7 @@ export default function FormEditUser() {
     );
     if (taiKhoanCanTim)
       return (
-        <div className=" bg-bgColor form-register ">
+        <div className=" bg-bgColor form-register">
           <Form
             className="w-full space-y-5"
             {...formItemLayout}
@@ -227,7 +215,7 @@ export default function FormEditUser() {
             <Form.Item {...tailFormItemLayout} className="flex justify-center">
               <Button
                 type="primary"
-                className="px-5 h-10 text-sm font-medium tracking-wider duration-300 rounded uppercase  bg-blue-500 text-white hover:bg-blue-600"
+                className="h-10 px-5 text-sm font-medium tracking-wider text-white uppercase duration-300 bg-blue-500 rounded hover:bg-blue-600"
                 htmlType="submit"
               >
                 Cập nhật

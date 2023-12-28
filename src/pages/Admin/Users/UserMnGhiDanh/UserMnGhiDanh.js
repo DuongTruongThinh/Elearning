@@ -1,8 +1,8 @@
 import React from "react";
 import TableChoXacThuc from "./TableChoXacThuc";
 import TableDaGhiDanh from "./TableDaGhiDanh";
-import Header from "../../components/layouts/Header/Header";
-import Footer from "../../components/layouts/Footer/Footer";
+import Header from "../../../../components/layouts/Header/Header";
+import Footer from "../../../../components/layouts/Footer/Footer";
 import { NavLink } from "react-router-dom";
 import FormGhiDanh from "./FormGhiDanh";
 

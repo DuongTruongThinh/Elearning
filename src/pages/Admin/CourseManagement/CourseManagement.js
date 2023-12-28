@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Button from "../../components/Button/Button";
-import PageSeparate from "../../components/PageSeparate/PageSeparate";
-import { courseServ } from "../../services/api";
+import Button from "../../../components/Button/Button";
+import PageSeparate from "../../../components/PageSeparate/PageSeparate";
+import { courseServ } from "../../../services/api";
 import { EditFilled, DeleteFilled } from "@ant-design/icons";
 import { notification } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { UPDATE_COURSE } from "../../redux/constant/course";
+import { UPDATE_COURSE } from "../../../redux/constant/course";
 
 const CourseManagement = () => {
   const [catagory, setCatagory] = useState([]);
@@ -71,7 +71,7 @@ const CourseManagement = () => {
     <section className="page-section bg-bgColor">
       <div className="page-container">
         <div className="flex justify-between">
-          <h3 className="font-title font-semibold text-4xl">Khóa học</h3>
+          <h3 className="text-4xl font-semibold font-title">Khóa học</h3>
           <Button onClick={handleAddCourse} type="gray-outline">
             Thêm khóa học
           </Button>
@@ -82,27 +82,27 @@ const CourseManagement = () => {
           <div className="grid grid-cols-4 gap-4">
             {listCourses &&
               listCourses.map((course, index) => (
-                <div className="p-4 rounded border flex flex-col " key={index}>
+                <div className="flex flex-col p-4 border rounded " key={index}>
                   <p className="h-32 mb-2">
                     <img
                       src={course.hinhAnh}
-                      className="w-full h-full object-cover rounded"
+                      className="object-cover w-full h-full rounded"
                       alt=""
                     />
                   </p>
-                  <h5 className="font-title font-medium text-base">
+                  <h5 className="text-base font-medium font-title">
                     {course.tenKhoaHoc}
                   </h5>
                   <p>
                     Mã khóa học: <b>{course.maKhoaHoc}</b>
                   </p>
                   <div className="flex justify-between mb-3">
-                    <span className="text-gray-500 font-medium">
+                    <span className="font-medium text-gray-500">
                       {course.nguoiTao.hoTen}
                     </span>
                     <span className="text-gray-sm">{course.ngayTao}</span>
                   </div>
-                  <div className="flex gap-2 mt-auto justify-end">
+                  <div className="flex justify-end gap-2 mt-auto">
                     <Button
                       type="primary"
                       onClick={() => handleEditCourse(course)}

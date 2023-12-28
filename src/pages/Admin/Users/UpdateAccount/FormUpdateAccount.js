@@ -14,10 +14,10 @@ import {
 } from "antd";
 // import { BASE_URL, configHeaders } from "../../api/config";
 import { useNavigate } from "react-router-dom";
-import { registerApi } from "../../services/api";
-import { userLocalStorage } from "../../services/localServices";
+import { registerApi } from "../../../../services/api";
+import { userLocalStorage } from "../../../../services/localServices";
 import axios from "axios";
-import { BASE_URL, TOKEN_CYBER } from "../../services/config";
+import { BASE_URL, TOKEN_CYBER } from "../../../../services/config";
 let info = userLocalStorage.get();
 const { Option } = Select;
 const formItemLayout = {

@@ -4,15 +4,15 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Account from "./pages/Account/Account";
-import UpdateAccount from "./pages/UpdateAccount/UpdateAccount";
+import UpdateAccount from "./pages/Admin/Users/UpdateAccount/UpdateAccount";
 import AdminLayout from "./components/layouts/AdminLayout/AdminLayout";
-import CourseManagement from "./pages/CourseManagement/CourseManagement";
-import AddCourse from "./pages/CourseManagement/AddCourse/AddCourse";
-import EditCourse from "./pages/CourseManagement/EditCourse/EditCourse";
-import UserManagement from "./pages/UserManagement/UserManagement";
-import UserMnEditUser from "./pages/UserMnEditUser/UserMnEditUser";
-import UserMnAddUser from "./pages/UserMnAddUser/UserMnAddUser";
-import UserMnGhiDanh from "./pages/UserMnGhiDanh/UserMnGhiDanh";
+import CourseManagement from "./pages/Admin/CourseManagement/CourseManagement";
+import AddCourse from "./pages/Admin/CourseManagement/AddCourse/AddCourse";
+import EditCourse from "./pages/Admin/CourseManagement/EditCourse/EditCourse";
+import UserManagement from "./pages/Admin/Users/UserManagement/UserManagement";
+import UserMnEditUser from "./pages/Admin/Users/UserMnEditUser/UserMnEditUser";
+import UserMnAddUser from "./pages/Admin/Users/UserMnAddUser/UserMnAddUser";
+import UserMnGhiDanh from "./pages/Admin/Users/UserMnGhiDanh/UserMnGhiDanh";
 import DefaultLayout from "./components/layouts/DefaultLayout/DefaultLayout";
 import Courses from "./pages/Courses/Courses";
 import AllCourses from "./pages/Courses/AllCourses";
@@ -62,20 +62,21 @@ function App() {
             path="/admin/edit-course/:id"
             element={<EditCourse></EditCourse>}
           ></Route>
+          <Route
+            path="/admin/user-management"
+            element={<UserManagement></UserManagement>}
+          ></Route>
+          <Route
+            path="/admin/add-user"
+            element={<UserMnAddUser></UserMnAddUser>}
+          ></Route>
         </Route>
 
-        <Route
-          path="/user-management"
-          element={<UserManagement></UserManagement>}
-        ></Route>
         <Route
           path="/user-management/edit-user/:id"
           element={<UserMnEditUser></UserMnEditUser>}
         ></Route>
-        <Route
-          path="/user-management/add-user"
-          element={<UserMnAddUser></UserMnAddUser>}
-        ></Route>
+
         <Route
           path="/user-management/course-registration/:id"
           element={<UserMnGhiDanh></UserMnGhiDanh>}

@@ -1,22 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {
-  Checkbox,
-  ConfigProvider,
-  DatePicker,
-  Form,
-  Input,
-  InputNumber,
-  Select,
-  Upload,
-  message,
-} from "antd";
-import { PlusOutlined } from "@ant-design/icons";
-import Button from "../../../components/Button/Button";
+import { ConfigProvider, DatePicker, Form, Input, Select, message } from "antd";
+import Button from "../../../../components/Button/Button";
 import TextArea from "antd/es/input/TextArea";
-import moment from "moment/moment";
 import "moment/locale/vi";
-import { courseServ } from "../../../services/api";
-import { userLocalStorage } from "../../../services/localServices";
+import { courseServ } from "../../../../services/api";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

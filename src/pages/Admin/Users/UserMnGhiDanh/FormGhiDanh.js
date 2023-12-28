@@ -13,9 +13,9 @@ import {
   message,
 } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
-import { userLocalStorage } from "../../services/localServices";
+import { userLocalStorage } from "../../../../services/localServices";
 import axios from "axios";
-import { BASE_URL, TOKEN_CYBER } from "../../services/config";
+import { BASE_URL, TOKEN_CYBER } from "../../../../services/config";
 import { useSelector } from "react-redux";
 
 export default function FormGhiDanh() {

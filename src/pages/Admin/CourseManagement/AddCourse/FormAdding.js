@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {
-  Checkbox,
-  ConfigProvider,
-  DatePicker,
-  Form,
-  Input,
-  InputNumber,
-  Select,
-  Upload,
-} from "antd";
-import { PlusOutlined } from "@ant-design/icons";
-import Button from "../../../components/Button/Button";
+import { ConfigProvider, DatePicker, Form, Input, Select } from "antd";
+import Button from "../../../../components/Button/Button";
 import TextArea from "antd/es/input/TextArea";
 import moment from "moment/moment";
 import "moment/locale/vi";
-import { courseServ } from "../../../services/api";
-import { userLocalStorage } from "../../../services/localServices";
+import { courseServ } from "../../../../services/api";
+import { userLocalStorage } from "../../../../services/localServices";
 const onFinish = (values) => {
   const ngayTao = moment(values.ngayTao.$d.toUTCString()).format("L");
 
@@ -46,12 +36,12 @@ const onFinish = (values) => {
 const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
-const normFile = (e) => {
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
+// const normFile = (e) => {
+//   if (Array.isArray(e)) {
+//     return e;
+//   }
+//   return e?.fileList;
+// };
 const FormAdding = () => {
   const [catagory, setCatagory] = useState([]);
   useEffect(() => {
@@ -100,7 +90,7 @@ const FormAdding = () => {
           colon={false}
           label="Tên khóa học"
           name="tenKhoaHoc"
-          className="font-semibold uppercase col-span-6"
+          className="col-span-6 font-semibold uppercase"
           rules={[
             {
               required: true,
@@ -115,7 +105,7 @@ const FormAdding = () => {
           colon={false}
           label="Mã khóa học"
           name="maKhoaHoc"
-          className="font-semibold uppercase col-span-6"
+          className="col-span-6 font-semibold uppercase"
           rules={[
             {
               required: true,
@@ -129,7 +119,7 @@ const FormAdding = () => {
         <Form.Item
           label="Danh Mục Khóa Học"
           name="maDanhMucKhoaHoc"
-          className="font-semibold uppercase col-span-6"
+          className="col-span-6 font-semibold uppercase"
         >
           <Select>
             {catagory?.map((item) => (
@@ -143,7 +133,7 @@ const FormAdding = () => {
         <Form.Item
           label="Mã nhóm"
           name="maNhom"
-          className="font-semibold uppercase col-span-3"
+          className="col-span-3 font-semibold uppercase"
         >
           <Select value="GP09">
             <Select.Option value="GP09">GP09</Select.Option>
@@ -153,7 +143,7 @@ const FormAdding = () => {
         <Form.Item
           name="ngayTao"
           label="Ngày tạo"
-          className="font-semibold uppercase col-span-3"
+          className="col-span-3 font-semibold uppercase"
           rules={[
             {
               required: true,
@@ -167,7 +157,7 @@ const FormAdding = () => {
         <Form.Item
           label="Mô tả"
           name="moTa"
-          className="font-semibold uppercase col-span-12"
+          className="col-span-12 font-semibold uppercase"
           rules={[
             {
               required: true,
@@ -182,7 +172,7 @@ const FormAdding = () => {
           colon={false}
           label="Liên kết hình ảnh"
           name="hinhAnh"
-          className="font-semibold uppercase col-span-12"
+          className="col-span-12 font-semibold uppercase"
           rules={[
             {
               required: true,

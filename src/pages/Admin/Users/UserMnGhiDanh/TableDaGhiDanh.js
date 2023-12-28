@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 // import { userServ } from "../../api/api";
 import { Button, Table, Tag, message, theme } from "antd";
 import axios from "axios";
-import { BASE_URL, TOKEN_CYBER } from "../../services/config";
+import { BASE_URL, TOKEN_CYBER } from "../../../../services/config";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
-export default function TableChoXacThuc() {
+export default function TableDaGhiDanh() {
+  let params = useParams();
+  let taiKhoan = params.id;
   const [listCourse, setListCourse] = useState([]);
   let { info } = useSelector((state) => {
     return state.userReducer;
@@ -15,10 +18,13 @@ export default function TableChoXacThuc() {
   function fetchlistCourse() {
     axios
       .post(
-        `${BASE_URL}/QuanLyNguoiDung/LayDanhSachKhoaHocChoXetDuyet`,
-        { taiKhoan: info.taiKhoan },
+        `${BASE_URL}/QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet`,
+        { taiKhoan: taiKhoan },
         {
-          headers: { Authorization: bearerToken, TokenCybersoft: TOKEN_CYBER },
+          headers: {
+            Authorization: bearerToken,
+            TokenCybersoft: TOKEN_CYBER,
+          },
         }
       )
       .then((res) => {
@@ -31,8 +37,8 @@ export default function TableChoXacThuc() {
   useEffect(() => {
     axios
       .post(
-        `${BASE_URL}/QuanLyNguoiDung/LayDanhSachKhoaHocChoXetDuyet`,
-        { taiKhoan: info.taiKhoan },
+        `${BASE_URL}/QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet`,
+        { taiKhoan: taiKhoan },
         {
           headers: { Authorization: bearerToken, TokenCybersoft: TOKEN_CYBER },
         }
@@ -44,6 +50,26 @@ export default function TableChoXacThuc() {
         console.log(err);
       });
   }, []);
+  let handleHuyGhiDanh = (khoaHoc) => {
+    axios
+      .post(
+        `${BASE_URL}/QuanLyKhoaHoc/HuyGhiDanh`,
+        {
+          maKhoaHoc: khoaHoc,
+          taiKhoan: taiKhoan,
+        },
+        {
+          headers: { Authorization: bearerToken, TokenCybersoft: TOKEN_CYBER },
+        }
+      )
+      .then((res) => {
+        message.success("Xóa thành công");
+        fetchlistCourse();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   let columnsHeader = [
     // { title: "Số thứ tự", dataIndex: "soThuTu", key: "tenKhoaHoc" },
     {
@@ -53,17 +79,13 @@ export default function TableChoXacThuc() {
     },
     {
       title: "Chờ xác nhận",
-      render: (_, user) => {
+      render: (_, khoaHoc) => {
         return (
           <div className=" flex space-x-2">
             <Button
-              className="text-white bg-green-500 hover:bg-green-700 border-none hover:shadow-lg
-            "
-            >
-              <span className="text-white">Xác thực</span>
-            </Button>
-
-            <Button
+              onClick={() => {
+                handleHuyGhiDanh(khoaHoc.maKhoaHoc);
+              }}
               className="text-white bg-red-500   border border-none hover:bg-red-600 hover:shadow-lg    
             "
             >
@@ -77,11 +99,7 @@ export default function TableChoXacThuc() {
 
   return (
     <div>
-      <Table
-        dataSource={listCourse}
-        columns={columnsHeader}
-        // className="page-container"
-      />
+      <Table dataSource={listCourse} columns={columnsHeader} className="" />
     </div>
   );
 }

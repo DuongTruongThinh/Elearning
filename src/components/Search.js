@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { SearchOutlined } from "@ant-design/icons";
 
-const SearchComponent = ({ type }) => {
+const SearchComponent = ({ type, className }) => {
   let searchClass = "";
   switch (type) {
-    case "hidden-bg":
-      searchClass = "bg-transparent";
+    case "light":
+      searchClass = "bg-gray-200";
       break;
 
     default:
@@ -19,11 +19,13 @@ const SearchComponent = ({ type }) => {
   };
 
   return (
-    <div className="w-80 flex items-center justify-between bg-gray-600 rounded  ml-auto">
+    <div
+      className={`flex items-center justify-between ml-auto bg-gray-600 rounded w-80 ${searchClass} ${className}`}
+    >
       <input
         type="text"
-        placeholder="Tìm kiếm khóa học..."
-        className="px-3 py-2 outline-none flex-1 bg-transparent"
+        placeholder="Tìm kiếm ..."
+        className="flex-1 px-3 py-2 bg-transparent outline-none"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />

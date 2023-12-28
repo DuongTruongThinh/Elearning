@@ -1,25 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   UserOutlined,
-  SearchOutlined,
   KeyOutlined,
   ReadFilled,
   PlusOutlined,
-  EditOutlined,
   ReadOutlined,
 } from "@ant-design/icons";
-import { ConfigProvider, Layout, Menu, Tooltip, theme } from "antd";
+import { ConfigProvider, Layout, Menu, Tooltip, theme, Popover } from "antd";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Search from "../../Search";
+import { PeopleAltOutlined, PersonAddAltOutlined } from "@mui/icons-material";
 const { Content, Footer, Sider } = Layout;
 
-const App = () => {
+const AdminLayout = () => {
   const navigate = useNavigate();
   const items = [
     {
       key: 1,
       icon: <UserOutlined />,
       label: "Quản lý người dùng",
+      children: [
+        {
+          key: "userList",
+          icon: <PeopleAltOutlined />,
+          label: "Danh sách người dùng",
+          onClick: () => navigate("/admin/user-management"),
+        },
+        {
+          key: "addUser",
+          icon: <PersonAddAltOutlined />,
+          label: "Thêm người dùng",
+          onClick: () => navigate("/admin/add-user"),
+        },
+      ],
     },
     {
       key: 2,
@@ -41,6 +54,37 @@ const App = () => {
       ],
     },
   ];
+  const content = (
+    <>
+      <Link
+        to=""
+        className="block px-2 py-2 text-base text-gray-500 duration-100 hover:text-black "
+        // onClick={handleFeatureDeveloping}
+      >
+        Thông tin cá nhân
+      </Link>
+      <Link
+        to=""
+        className="block px-2 py-2 text-base text-gray-500 duration-100 hover:text-black"
+        // onClick={handleFeatureDeveloping}
+      >
+        Khóa học của tôi
+      </Link>
+      <Link
+        to=""
+        className="block px-2 py-2 text-base text-gray-500 duration-100 hover:text-black"
+        // onClick={handleFeatureDeveloping}
+      >
+        Cài đặt
+      </Link>
+      <Link
+        className="block px-2 py-2 text-base text-gray-500 duration-100 hover:text-black"
+        // onClick={handleLogOut}
+      >
+        Đăng xuất
+      </Link>
+    </>
+  );
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -64,6 +108,7 @@ const App = () => {
             left: 0,
             top: 0,
             bottom: 0,
+            zIndex: 10000,
           }}
           breakpoint="lg"
           collapsedWidth="0"
@@ -73,7 +118,7 @@ const App = () => {
         >
           <Link
             to={"/"}
-            className="flex items-center text-lg font-bold cursor-pointer pl-5 py-2"
+            className="flex items-center py-2 pl-5 text-lg font-bold cursor-pointer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +159,7 @@ const App = () => {
                 d="M16.61,50.993c-0.399,0-0.831-0.042-1.285-0.126c-1.396-0.415-2.618-1.635-3.631-3.628	c-3.561-7.002-3.09-20.633-1.498-24.785l0.087-0.229l0.05-0.24c0.057-0.279,0.263-0.694,0.481-1.134l0.167-0.34	c0.957-1.844,2.573-2.051,3.223-2.051c0.837,0,1.623,0.308,2.05,0.803C17.715,20.958,17.163,26.255,17,29	c-0.062,1.042-0.036,1.881,0.333,4.154c0.202,1.245,1.774,1.681,2.582,0.712c4.069-4.873,9.687-13.218,12.572-15.434	C33.719,17.52,35.021,17,36.115,17c0.809,0,1.444,0.288,1.944,0.878c0.461,0.545,1.364,6.859,1.296,12.473	c-0.018,1.493,1.807,2.222,2.813,1.119c4.477-4.912,12.324-13.211,14.226-13.211c0.126,0,0.229,0.015,0.313,0.045l0.126,0.042	c0.047,0.015,0.09,0.04,0.121,0.062l0.01,0.044c0.158,0.658-0.424,1.585-2.265,4.285c-0.939,1.377-2.108,3.091-3.469,5.304	c-2.698,4.393-4.457,8.003-5.87,10.904c-1.261,2.589-2.258,4.634-3.118,5.479l-0.132,0.138c-0.846,0.942-1.927,1.461-3.045,1.461	c-1.058,0-2.054-0.468-2.878-1.354c-0.747-0.802-1.604-5.844-2.408-11.69c-0.297-2.158-3.148-2.726-4.25-0.847	c-1.926,3.282-3.898,7.066-4.499,8.437C22.2,47.032,20.279,50.993,16.61,50.993z"
               />
             </svg>
-            <span className="text-2xl hidden lg:inline-block font-logo text-white">
+            <span className="hidden text-2xl text-white lg:inline-block font-logo">
               eloky
             </span>
           </Link>
@@ -127,31 +172,39 @@ const App = () => {
         </Sider>
         <Layout>
           <div className="pl-[240px] bg-bgColor pr-12 py-3 flex justify-between items-center">
-            {/* <div className="w-60 flex items-center justify-between bg-slate-200 rounded">
+            {/* <div className="flex items-center justify-between rounded w-60 bg-slate-200">
               <input
                 type="text"
                 placeholder="Tìm kiếm khóa học..."
-                className="px-3 py-2 outline-none flex-1 bg-transparent"
+                className="flex-1 px-3 py-2 bg-transparent outline-none"
               />
               <button className="p-2 text-lg">
                 <SearchOutlined />
               </button>
             </div> */}
-            <Search />
-            <div>
-              <Tooltip
-                title="Đăng nhập"
-                color="#fff"
-                overlayInnerStyle={{ color: "black", fontWeight: 500 }}
+            <Search type="light" className="ml-0" />
+            <span className="cursor-pointer">
+              <ConfigProvider
+                theme={{
+                  token: {
+                    sizePopupArrow: 20,
+                  },
+                }}
               >
-                <button
-                  // onClick={() => console.log("test")}
-                  className="text-gray-400 duration-300 hover:text-white"
+                <Popover
+                  content={content}
+                  trigger="click"
+                  placement="bottomLeft"
+                  className="shadow-sm"
                 >
-                  <KeyOutlined className="text-xl " />
-                </button>
-              </Tooltip>
-            </div>
+                  <img
+                    className="w-12 h-12 rounded-full"
+                    src="https://img.icons8.com/plasticine/100/user-male-circle.png"
+                    alt="user-male-circle"
+                  />
+                </Popover>
+              </ConfigProvider>
+            </span>
           </div>
           <Content>
             <div
@@ -169,11 +222,11 @@ const App = () => {
               textAlign: "center",
             }}
           >
-            Ant Design ©2023 Created by Ant UED
+            ©2023 Created by Cyber Team
           </Footer>
         </Layout>
       </Layout>
     </ConfigProvider>
   );
 };
-export default App;
+export default AdminLayout;

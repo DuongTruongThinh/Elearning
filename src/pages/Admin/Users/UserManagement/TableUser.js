@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-// import { userServ } from "../../api/api";
-import { Button, Table, Tag, message, theme } from "antd";
+import { Button, Table, Tag, message } from "antd";
 import axios from "axios";
-import { BASE_URL, TOKEN_CYBER } from "../../services/config";
+import { BASE_URL, TOKEN_CYBER } from "../../../../services/config";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -88,7 +87,7 @@ export default function TableUser() {
       dataIndex: "maLoaiNguoiDung",
       key: "maLoaiNguoiDung",
       render: (text) => {
-        if (text == "HV") {
+        if (text === "HV") {
           return <Tag color="green">Học viên</Tag>;
         } else {
           return <Tag color="red">Giáo vụ</Tag>;
@@ -105,8 +104,7 @@ export default function TableUser() {
               onClick={() => {
                 handleGhiDanh(user.taiKhoan);
               }}
-              className="text-white bg-green-500 hover:bg-green-700 border-none hover:shadow-lg
-            "
+              className="text-white bg-green-500 border-none hover:bg-green-700 hover:shadow-lg "
             >
               <span className="text-white">Ghi danh</span>
             </Button>
@@ -114,8 +112,7 @@ export default function TableUser() {
               onClick={() => {
                 handleEdit(user.taiKhoan);
               }}
-              className="text-white bg-orange-400 hover:bg-orange-600  border-none hover:shadow-lg
-            "
+              className="text-white bg-orange-400 border-none hover:bg-orange-600 hover:shadow-lg "
             >
               <span className="text-white">Sửa</span>
             </Button>
@@ -123,8 +120,7 @@ export default function TableUser() {
               onClick={() => {
                 handleDelete(user.taiKhoan);
               }}
-              className="text-white bg-red-400   border border-none hover:bg-red-500 hover:shadow-lg    
-            "
+              className="text-white bg-red-400 border border-none hover:bg-red-500 hover:shadow-lg "
             >
               <span className="text-white">Xóa</span>
             </Button>
