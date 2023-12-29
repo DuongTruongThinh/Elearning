@@ -16,7 +16,6 @@ const Header = ({ isChangeHeader }) => {
   const [showNavbar, setShowNavbar] = useState(false);
   const navigate = useNavigate();
   const params = useParams();
-  console.log(params);
   const handleLogOut = () => {
     if (Object.keys(params).length > 0) {
       navigate("/");

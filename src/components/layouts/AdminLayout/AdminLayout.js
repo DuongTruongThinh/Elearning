@@ -1,12 +1,11 @@
 import React from "react";
 import {
   UserOutlined,
-  KeyOutlined,
   ReadFilled,
   PlusOutlined,
   ReadOutlined,
 } from "@ant-design/icons";
-import { ConfigProvider, Layout, Menu, Tooltip, theme, Popover } from "antd";
+import { ConfigProvider, Layout, Menu, theme, Popover } from "antd";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Search from "../../Search";
 import { PeopleAltOutlined, PersonAddAltOutlined } from "@mui/icons-material";

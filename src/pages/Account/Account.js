@@ -55,7 +55,6 @@ export default function Account() {
           })
           .then((res) => {
             setAccount(res.data);
-            // console.log(res.data);
           })
           .catch((err) => {
             console.log(err);
@@ -68,7 +67,7 @@ export default function Account() {
   let renderThongTinTaiKhoan1 = (thongTinTaiKhoan) => {
     if (thongTinTaiKhoan != null) {
       return (
-        <div className="w-full lg:w-1/2 space-y-3">
+        <div className="w-full space-y-3 lg:w-1/2">
           <p className="font-bold">
             <span>Email:</span>
             <span className="font-normal"> {thongTinTaiKhoan.email}</span>
@@ -91,7 +90,7 @@ export default function Account() {
   let renderThongTinTaiKhoan2 = (thongTinTaiKhoan) => {
     if (thongTinTaiKhoan != null) {
       return (
-        <div className="w-full lg:w-1/2 space-y-3">
+        <div className="w-full space-y-3 lg:w-1/2">
           <p className="font-bold">
             <span>Họ và tên:</span>
             <span className="font-normal"> {thongTinTaiKhoan.hoTen}</span>
@@ -108,7 +107,7 @@ export default function Account() {
             <NavLink to={`/update-account/${params.id}`}>
               <button
                 type="primary"
-                className="px-5 h-10 text-sm font-medium tracking-wider duration-300 rounded shadow-lg uppercase  bg-orange-500 text-white hover:bg-orange-600"
+                className="h-10 px-5 text-sm font-medium tracking-wider text-white uppercase duration-300 bg-orange-500 rounded shadow-lg hover:bg-orange-600"
               >
                 Cập nhật
               </button>
@@ -124,19 +123,19 @@ export default function Account() {
       thongTinTaiKhoan.chiTietKhoaHocGhiDanh != null
     ) {
       return (
-        <div className="w-full space-y-3 pt-5">
+        <div className="w-full pt-5 space-y-3">
           {/* <p>KHÓA HỌC CỦA TÔI</p> */}
 
           {thongTinTaiKhoan.chiTietKhoaHocGhiDanh.map((item, index) => {
             return (
               <div
-                className="lg:flex md:flex justify-center py-3 shadow-sm"
+                className="justify-center py-3 shadow-sm lg:flex md:flex"
                 key={index}
               >
                 <div className="w-1/4">
                   <img
                     src={item.hinhAnh}
-                    className="h-32 w-32 object-fill"
+                    className="object-fill w-32 h-32"
                   ></img>
                 </div>
                 <div className="w-1/2 space-y-2">
@@ -155,7 +154,7 @@ export default function Account() {
                   <button
                     onClick={() => handleHuyKhoaHoc(index)}
                     type="primary"
-                    className="px-5 h-10 text-sm font-medium tracking-wider duration-300 rounded uppercase  bg-red-500 text-white hover:bg-red-600"
+                    className="h-10 px-5 text-sm font-medium tracking-wider text-white uppercase duration-300 bg-red-500 rounded hover:bg-red-600"
                   >
                     HỦY ĐĂNG KÝ
                   </button>
@@ -171,11 +170,11 @@ export default function Account() {
     <div>
       <div className="border-b border-gray-400">
         <div className="page-container ">
-          <div className="pt-24 pb-10 lg:flex justify-between items-center lg:flex-row-reverse">
-            <div className="sm:w-full md:w-2/3 lg:w-2/3 flex justify-end">
+          <div className="items-center justify-between pt-24 pb-10 lg:flex lg:flex-row-reverse">
+            <div className="flex justify-end sm:w-full md:w-2/3 lg:w-2/3">
               <img
                 src="/img/account-banner.jpg"
-                className="h-40 object-contain"
+                className="object-contain h-40"
                 alt="ảnh bị lỗi"
               />
             </div>
@@ -186,9 +185,9 @@ export default function Account() {
           </div>
         </div>
       </div>
-      <div className=" py-10 bg-bgColor">
+      <div className="py-10  bg-bgColor">
         <div className="page-container">
-          <div className="bg-white p-10 ">
+          <div className="p-10 bg-white ">
             <Tabs
               onChange={onChange}
               type="card"

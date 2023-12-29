@@ -1,49 +1,47 @@
 import React, { useEffect, useState } from "react";
-import { ConfigProvider, DatePicker, Form, Input, Select } from "antd";
+import { ConfigProvider, DatePicker, Form, Input, Select, message } from "antd";
 import Button from "../../../../components/Button/Button";
 import TextArea from "antd/es/input/TextArea";
 import moment from "moment/moment";
 import "moment/locale/vi";
 import { courseServ } from "../../../../services/api";
 import { userLocalStorage } from "../../../../services/localServices";
-const onFinish = (values) => {
-  const ngayTao = moment(values.ngayTao.$d.toUTCString()).format("L");
+import { useNavigate } from "react-router-dom";
 
-  const data = {
-    ...values,
-    ngayTao,
-    luotXem: 0,
-    danhGia: 0,
-    taiKhoanNguoiTao: userLocalStorage?.get().taiKhoan,
-  };
-  courseServ
-    .addCourse(data)
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  courseServ
-    .addImageCourse(values.hinhAnh)
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
-// const normFile = (e) => {
-//   if (Array.isArray(e)) {
-//     return e;
-//   }
-//   return e?.fileList;
-// };
 const FormAdding = () => {
   const [catagory, setCatagory] = useState([]);
+  const [selectedImage, setSelectedImage] = useState();
+  const navigate = useNavigate();
+  const handleChangeFile = (e) => {
+    let file = e.target.files[0];
+    setSelectedImage(file);
+  };
+  const onFinish = async (values) => {
+    const ngayTao = moment(values.ngayTao.$d.toUTCString()).format("L");
+    let formData = new FormData();
+
+    const data = {
+      ...values,
+      ngayTao,
+      luotXem: 0,
+      danhGia: 0,
+      taiKhoanNguoiTao: userLocalStorage?.get().taiKhoan,
+      hinhAnh: selectedImage,
+    };
+    for (let key in data) {
+      formData.append(key, data[key]);
+    }
+    try {
+      await courseServ.addImageCourse(formData);
+      message.success("Thêm khóa học thành công");
+      navigate("/admin/courses");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
   useEffect(() => {
     courseServ
       .getCategoryList()
@@ -122,8 +120,8 @@ const FormAdding = () => {
           className="col-span-6 font-semibold uppercase"
         >
           <Select>
-            {catagory?.map((item) => (
-              <Select.Option key={item} value={item.maDanhMuc}>
+            {catagory?.map((item, index) => (
+              <Select.Option key={index} value={item.maDanhMuc}>
                 {item.tenDanhMuc}
               </Select.Option>
             ))}
@@ -180,7 +178,7 @@ const FormAdding = () => {
             },
           ]}
         >
-          <input type="file" />
+          <input type="file" onChange={handleChangeFile} />
         </Form.Item>
 
         <Form.Item className="col-span-12">
